@@ -1,11 +1,11 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const links = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Countries", href: "#countries" },
-  { label: "Colleges", href: "#colleges" },
   { label: "MCA FAQ", href: "#mca-faq" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Team", href: "#team" },
@@ -14,11 +14,16 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const resolveHref = (href) => (pathname === "/" ? href : `/${href}`);
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
       <nav className="glass-panel mx-auto flex max-w-7xl items-center justify-between rounded-full px-5 py-3 shadow-soft">
-        <a href="#home" className="flex items-center gap-3 sm:gap-4">
+        <a
+          href={resolveHref("#home")}
+          className="flex items-center gap-3 sm:gap-4"
+        >
           <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-brand-100 bg-white shadow-sm sm:h-14 sm:w-14">
             <img
               src="/logo.png"
@@ -40,15 +45,15 @@ export default function Navbar() {
           {links.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={resolveHref(link.href)}
               className="text-sm font-semibold text-slate-700 transition hover:text-brand-600"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="#contact"
-            className="rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-700"
+            href={resolveHref("#contact")}
+            className="rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-gradient-to-b from-emerald-400 to-cyan-400"
           >
             Apply Now
           </a>
@@ -70,7 +75,7 @@ export default function Navbar() {
             {links.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={resolveHref(link.href)}
                 className="text-sm font-semibold text-slate-700"
                 onClick={() => setOpen(false)}
               >
@@ -78,7 +83,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href={resolveHref("#contact")}
               className="rounded-full bg-brand-600 px-5 py-3 text-center text-sm font-bold text-white"
               onClick={() => setOpen(false)}
             >

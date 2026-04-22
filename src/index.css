@@ -16,8 +16,16 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(24, 119, 242, 0.18), transparent 28%),
-    radial-gradient(circle at top right, rgba(255, 183, 3, 0.12), transparent 24%),
+    radial-gradient(
+      circle at top left,
+      rgba(24, 119, 242, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(255, 183, 3, 0.12),
+      transparent 24%
+    ),
     #f7fbff;
   color: #08111f;
 }
@@ -31,7 +39,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(17, 75, 167, 0.3);
+  background: #10b981;
   border-radius: 999px;
 }
 

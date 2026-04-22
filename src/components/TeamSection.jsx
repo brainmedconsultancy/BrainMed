@@ -9,7 +9,7 @@ export default function TeamSection() {
         <SectionHeading
           eyebrow="Team"
           title="Meet our team."
-          description="A clean, minimal team section with simple square cards and clear member details."
+          description="Meet the experts who support, guide, and empower students at every step of their study abroad journey. "
         />
 
         <div

@@ -161,7 +161,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12, duration: 0.8 }}
-          className="select-none whitespace-nowrap font-display text-[4.1rem] font-black uppercase tracking-[0.14em] text-emerald-400 drop-shadow-[0_10px_34px_rgba(52,211,153,0.3)] sm:text-[5.8rem] md:text-[7.8rem] lg:text-[9.4rem]"
+          className="font-display select-none whitespace-nowrap  text-[4.1rem] font-black uppercase tracking-[0.14em] text-emerald-400 drop-shadow-[0_10px_34px_rgba(52,211,153,0.3)] sm:text-[5.8rem] md:text-[7.8rem] lg:text-[9.4rem]"
         >
           BrainMed
         </motion.p>

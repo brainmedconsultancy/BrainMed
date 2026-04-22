@@ -35,27 +35,7 @@ export const services = [
 
 export const countries = [
   {
-    name: "USA",
-    flagUrl: "https://flagcdn.com/w80/us.png",
-    description:
-      "World-class research institutions and flexible course structures for ambitious global students.",
-    services: ["University shortlisting", "SOP support", "Interview prep"],
-  },
-  {
-    name: "UK",
-    flagUrl: "https://flagcdn.com/w80/gb.png",
-    description:
-      "Accelerated master's programs and a prestigious tradition of academic excellence.",
-    services: ["CAS support", "Visa documents", "Accommodation help"],
-  },
-  {
-    name: "China",
-    flagUrl: "https://flagcdn.com/w80/cn.png",
-    description:
-      "Rapidly advancing tech hubs and affordable, high-ranking medical and engineering programs.",
-    services: ["HSK prep guidance", "Scholarship search", "Visa processing"],
-  },
-  {
+    slug: "russia",
     name: "Russia",
     flagUrl: "https://flagcdn.com/w80/ru.png",
     description:
@@ -63,13 +43,7 @@ export const countries = [
     services: ["Direct admissions", "Document translation", "Hostel booking"],
   },
   {
-    name: "Singapore",
-    flagUrl: "https://flagcdn.com/w80/sg.png",
-    description:
-      "A global financial hub offering elite business and technology education in the heart of Asia.",
-    services: ["Student Pass help", "Internship pathways", "Credit transfer"],
-  },
-  {
+    slug: "georgia",
     name: "Georgia",
     flagUrl: "https://flagcdn.com/w80/ge.png",
     description:
@@ -77,13 +51,7 @@ export const countries = [
     services: ["MBBS admissions", "TRC assistance", "Apostille services"],
   },
   {
-    name: "Malaysia",
-    flagUrl: "https://flagcdn.com/w80/my.png",
-    description:
-      "A multicultural hub with branch campuses of top global universities and low cost of living.",
-    services: ["EMGS processing", "Course matching", "Pre-departure briefing"],
-  },
-  {
+    slug: "kyrgyzstan",
     name: "Kyrgyzstan",
     flagUrl: "https://flagcdn.com/w80/kg.png",
     description:
@@ -91,6 +59,51 @@ export const countries = [
     services: ["MCI/NMC coaching", "Admission letters", "Travel support"],
   },
   {
+    slug: "usa",
+    name: "USA",
+    flagUrl: "https://flagcdn.com/w80/us.png",
+    description:
+      "World-class research institutions and flexible course structures for ambitious global students.",
+    services: ["University shortlisting", "SOP support", "Interview prep"],
+  },
+  {
+    slug: "uk",
+    name: "UK",
+    flagUrl: "https://flagcdn.com/w80/gb.png",
+    description:
+      "Accelerated master's programs and a prestigious tradition of academic excellence.",
+    services: ["CAS support", "Visa documents", "Accommodation help"],
+  },
+
+  {
+    slug: "china",
+    name: "China",
+    flagUrl: "https://flagcdn.com/w80/cn.png",
+    description:
+      "Rapidly advancing tech hubs and affordable, high-ranking medical and engineering programs.",
+    services: ["HSK prep guidance", "Scholarship search", "Visa processing"],
+  },
+
+  {
+    slug: "singapore",
+    name: "Singapore",
+    flagUrl: "https://flagcdn.com/w80/sg.png",
+    description:
+      "A global financial hub offering elite business and technology education in the heart of Asia.",
+    services: ["Student Pass help", "Internship pathways", "Credit transfer"],
+  },
+
+  {
+    slug: "malaysia",
+    name: "Malaysia",
+    flagUrl: "https://flagcdn.com/w80/my.png",
+    description:
+      "A multicultural hub with branch campuses of top global universities and low cost of living.",
+    services: ["EMGS processing", "Course matching", "Pre-departure briefing"],
+  },
+
+  {
+    slug: "turkey",
     name: "Turkey",
     flagUrl: "https://flagcdn.com/w80/tr.png",
     description:
@@ -99,55 +112,55 @@ export const countries = [
   },
 ];
 
-export const colleges = [
-  {
-    name: "University of Toronto",
-    country: "Canada",
-    courses: ["Computer Science", "Business Analytics", "Public Health"],
-    description:
-      "A research-intensive university with strong global reputation and diverse student life.",
-  },
-  {
-    name: "Monash University",
-    country: "Australia",
-    courses: ["Data Science", "Nursing", "Mechanical Engineering"],
-    description:
-      "Known for industry-aligned programs and strong international student support.",
-  },
-  {
-    name: "University of Manchester",
-    country: "United Kingdom",
-    courses: ["Finance", "AI", "Biotechnology"],
-    description:
-      "A leading UK institution with broad postgraduate options and employability focus.",
-  },
-  {
-    name: "Arizona State University",
-    country: "United States",
-    courses: ["Information Systems", "Construction Management", "Psychology"],
-    description:
-      "Offers innovation-driven programs and multiple pathways for international students.",
-  },
-  {
-    name: "Technical University of Munich",
-    country: "Germany",
-    courses: ["Robotics", "Management", "Automotive Engineering"],
-    description:
-      "Highly respected for engineering and technology programs in Europe.",
-  },
-  {
-    name: "University of Alberta",
-    country: "Canada",
-    courses: ["Petroleum Engineering", "MBA", "Pharmacy"],
-    description:
-      "A solid option for students seeking research strength and career-focused programs.",
-  },
-];
+// export const colleges = [
+//   {
+//     name: "University of Toronto",
+//     country: "Canada",
+//     courses: ["Computer Science", "Business Analytics", "Public Health"],
+//     description:
+//       "A research-intensive university with strong global reputation and diverse student life.",
+//   },
+//   {
+//     name: "Monash University",
+//     country: "Australia",
+//     courses: ["Data Science", "Nursing", "Mechanical Engineering"],
+//     description:
+//       "Known for industry-aligned programs and strong international student support.",
+//   },
+//   {
+//     name: "University of Manchester",
+//     country: "United Kingdom",
+//     courses: ["Finance", "AI", "Biotechnology"],
+//     description:
+//       "A leading UK institution with broad postgraduate options and employability focus.",
+//   },
+//   {
+//     name: "Arizona State University",
+//     country: "United States",
+//     courses: ["Information Systems", "Construction Management", "Psychology"],
+//     description:
+//       "Offers innovation-driven programs and multiple pathways for international students.",
+//   },
+//   {
+//     name: "Technical University of Munich",
+//     country: "Germany",
+//     courses: ["Robotics", "Management", "Automotive Engineering"],
+//     description:
+//       "Highly respected for engineering and technology programs in Europe.",
+//   },
+//   {
+//     name: "University of Alberta",
+//     country: "Canada",
+//     courses: ["Petroleum Engineering", "MBA", "Pharmacy"],
+//     description:
+//       "A solid option for students seeking research strength and career-focused programs.",
+//   },
+// ];
 
 export const testimonials = [
   {
-    name: "Aarav Mehta",
-    outcome: "Admitted to University of Manchester",
+    name: "NityaShree",
+    outcome: "Admitted to Altai State Medical University",
     review:
       "The team made the process feel calm and organized. My shortlist, SOP, and visa steps were all handled with real clarity.",
   },
@@ -158,10 +171,29 @@ export const testimonials = [
       "I came in confused about country selection. They helped me compare budgets and career outcomes instead of pushing random options.",
   },
   {
-    name: "Nabeel Khan",
+    name: "Pramod K",
     outcome: "Received Australia offer and visa approval",
     review:
       "Fast responses, clean documentation guidance, and honest feedback. That made a huge difference for my application timeline.",
+  },
+];
+
+export const audioTestimonials = [
+  {
+    name: "Student Voice 01",
+    outcome: "Audio testimonial from a recent applicant",
+    summary:
+      "A quick student experience sharing how the admission journey felt from counseling to application support.",
+    audioSrc: "/testimonials/602c-4b60-42bc-9623-ec9fba714ba5.mp3",
+    accent: "from-emerald-400 via-cyan-400 to-brand-500",
+  },
+  {
+    name: "Student Voice 02",
+    outcome: "Audio testimonial from a successful counseling journey",
+    summary:
+      "Another short voice review highlighting the clarity, responsiveness, and guidance provided throughout the process.",
+    audioSrc: "/testimonials/173a-f697-4ab7-aea3-6cc2e52fc8d7.mp3",
+    accent: "from-brand-400 via-sky-400 to-emerald-400",
   },
 ];
 
@@ -206,35 +238,35 @@ export const mbbsFaqChats = [
 
 export const teamMembers = [
   {
-    name: "Ayaan Malik",
-    role: "Admissions Strategist",
+    name: "Shashank Gowda",
+    role: "CEO & Founder",
     company: "Student Success Desk",
     image: "/team/m1.jpeg",
     description:
-      "Supports application planning, profile direction, and smooth student onboarding.",
+      "Oversees application planning, provides strategic profile guidance, and ensures a smooth student onboarding experience.",
   },
   {
-    name: "Zayan Sheikh",
-    role: "Global Outreach Lead",
+    name: "Jinith HR",
+    role: "Founder & Managing Director",
     company: "International Relations Wing",
     image: "/team/m2.jpeg",
     description:
-      "Builds university connections and helps students explore the right study destinations.",
+      "Builds strong university partnerships and helps students identify the most suitable study destinations.",
   },
   {
-    name: "Rehan Qureshi",
-    role: "Operations Coordinator",
+    name: "Dhanush Gowda",
+    role: "Co-Founder & Chief Financial Officer (CFO)",
     company: "Admissions Operations Team",
     image: "/team/m3.jpeg",
     description:
-      "Keeps documentation, timelines, and internal follow-ups aligned across every application stage.",
+      "Manages documentation, timelines, and internal coordination to keep every application process on track.",
   },
   {
-    name: "Sara Khan",
-    role: "Student Support Executive",
+    name: "Hamsa HY",
+    role: "Managing Partner",
     company: "Care & Guidance Team",
     image: "/team/w1.jpeg",
     description:
-      "Handles student communication, routine guidance, and day-to-day support during the process.",
+      "Provides consistent student communication, guidance, and day-to-day support throughout the entire process.",
   },
 ];

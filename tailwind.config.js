@@ -16,26 +16,32 @@ export default {
           600: "#0F5FD2",
           700: "#114BA7",
           800: "#153F88",
-          900: "#18356F"
+          900: "#18356F",
         },
         accent: {
           100: "#FFF5CC",
           300: "#FFD76A",
-          500: "#FFB703"
-        }
+          500: "#FFB703",
+        },
       },
+      // fontFamily: {
+      //   sans: ["Manrope", "sans-serif"],
+      //   display: ["Poppins", "Space Grotesk", "Inter", "sans-serif"],
+      //   body: ["Inter", "Manrope", "system-ui", "sans-serif"],
+      // },
       fontFamily: {
-        sans: ["Manrope", "sans-serif"],
-        display: ["Space Grotesk", "sans-serif"]
+        sans: ["sans-serif"],
+        display: ["Poppins", "sans-serif"],
+        body: ["Inter", "sans-serif"],
       },
       boxShadow: {
         panel: "0 24px 80px rgba(8, 17, 31, 0.12)",
-        soft: "0 14px 40px rgba(24, 119, 242, 0.12)"
+        soft: "0 14px 40px rgba(24, 119, 242, 0.12)",
       },
       backgroundImage: {
         "grid-fade":
-          "linear-gradient(rgba(24,119,242,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(24,119,242,0.06) 1px, transparent 1px)"
-      }
+          "linear-gradient(rgba(24,119,242,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(24,119,242,0.06) 1px, transparent 1px)",
+      },
     },
   },
   plugins: [],

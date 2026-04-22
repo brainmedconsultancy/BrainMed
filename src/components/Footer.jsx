@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const links = [
   { label: "About", href: "#about" },
@@ -22,6 +23,8 @@ const contactItems = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { pathname } = useLocation();
+  const resolveHref = (href) => (pathname === "/" ? href : `/${href}`);
 
   return (
     <footer className="mb-8 px-4 pb-8 pt-14">
@@ -53,7 +56,7 @@ export default function Footer() {
               </p>
 
               <a
-                href="#contact"
+                href={resolveHref("#contact")}
                 className="mt-5 inline-flex rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-300 transition-colors duration-300 hover:bg-emerald-400/15 hover:text-emerald-200"
               >
                 Start your application
@@ -69,7 +72,7 @@ export default function Footer() {
                   {links.map((link) => (
                     <a
                       key={link.label}
-                      href={link.href}
+                      href={resolveHref(link.href)}
                       className="text-sm text-slate-300 transition-colors duration-300 hover:text-emerald-400"
                     >
                       {link.label}

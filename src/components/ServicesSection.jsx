@@ -10,7 +10,7 @@ export default function ServicesSection() {
         <SectionHeading
           eyebrow="Services"
           title="The full support students expect from a modern consultancy."
-          description="Each service block is designed to explain value clearly while keeping the overall system lightweight and easy to manage."
+          description="Explore top study destinations worldwide with trusted guidance tailored to your academic goals."
         />
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -32,7 +32,7 @@ export default function ServicesSection() {
               <p className="mt-3 text-base leading-7 text-slate-600">
                 {service.description}
               </p>
-              <div className="mt-5 h-1 w-16 rounded-full bg-brand-500 transition group-hover:w-28" />
+              <div className="mt-5 h-1 w-16 rounded-full bg-emerald-500 transition-all duration-300 ease-in-out group-hover:w-28" />
             </motion.div>
           ))}
         </div>

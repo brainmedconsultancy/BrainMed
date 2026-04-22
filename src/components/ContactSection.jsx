@@ -74,7 +74,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="rounded-[2rem] bg-ink p-8 text-white shadow-panel"
           >
-            <p className="font-display text-sm uppercase tracking-[0.35em] text-brand-200">
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-emerald-500">
               Talk to us
             </p>
             <h3 className="mt-4 text-3xl font-bold">
