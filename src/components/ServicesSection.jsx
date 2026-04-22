@@ -23,11 +23,15 @@ export default function ServicesSection() {
               transition={{ duration: 0.55, delay: index * 0.06 }}
               className="group rounded-[2rem] bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-panel"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-100 text-amber-600">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
                 <BriefcaseBusiness size={22} />
               </div>
-              <h3 className="mt-5 text-2xl font-bold text-ink">{service.title}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{service.description}</p>
+              <h3 className="mt-5 text-2xl font-bold text-ink">
+                {service.title}
+              </h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">
+                {service.description}
+              </p>
               <div className="mt-5 h-1 w-16 rounded-full bg-brand-500 transition group-hover:w-28" />
             </motion.div>
           ))}

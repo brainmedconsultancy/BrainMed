@@ -6,17 +6,20 @@ const cards = [
   {
     icon: Compass,
     title: "Mission",
-    description: "Make international education decisions simpler, smarter, and more transparent for every student.",
+    description:
+      "Make international education decisions simpler, smarter, and more transparent for every student.",
   },
   {
     icon: Rocket,
     title: "Vision",
-    description: "Build a guidance experience where students feel informed, prepared, and supported at every step.",
+    description:
+      "Build a guidance experience where students feel informed, prepared, and supported at every step.",
   },
   {
     icon: Award,
     title: "Background",
-    description: "Built by experienced counselors with years of admissions, visa, and university application support.",
+    description:
+      "Built by experienced counselors with years of admissions, visa, and university application support.",
   },
 ];
 
@@ -38,20 +41,30 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             className="overflow-hidden rounded-[2rem] bg-ink p-8 text-white shadow-panel"
           >
-            <p className="font-display text-sm uppercase tracking-[0.35em] text-brand-200">Why families choose us</p>
-            <h3 className="mt-4 text-3xl font-bold md:text-4xl">Strong guidance, honest options, and a process that feels managed.</h3>
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-emerald-500">
+              Why families choose us
+            </p>
+            <h3 className="mt-4 text-3xl font-bold md:text-4xl">
+              Strong guidance, honest options, and a process that feels managed.
+            </h3>
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-200">
-              From company background and years of experience to practical application support, this site is designed
-              to present your consultancy as professional, responsive, and trustworthy. The structure also keeps content easy to update later.
+              From company background and years of experience to practical
+              application support, this site is designed to present your
+              consultancy as professional, responsive, and trustworthy. The
+              structure also keeps content easy to update later.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.5rem] bg-white/10 p-5">
                 <p className="text-3xl font-extrabold">12+</p>
-                <p className="mt-2 text-sm text-slate-200">Years in international admissions and student counseling</p>
+                <p className="mt-2 text-sm text-slate-200">
+                  Years in international admissions and student counseling
+                </p>
               </div>
               <div className="rounded-[1.5rem] bg-white/10 p-5">
                 <p className="text-3xl font-extrabold">18</p>
-                <p className="mt-2 text-sm text-slate-200">Advisors and application specialists across key destinations</p>
+                <p className="mt-2 text-sm text-slate-200">
+                  Advisors and application specialists across key destinations
+                </p>
               </div>
             </div>
           </motion.div>
@@ -68,11 +81,15 @@ export default function AboutSection() {
                   transition={{ duration: 0.6, delay: index * 0.08 }}
                   className="glass-panel rounded-[2rem] p-6 shadow-soft"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
                     <Icon size={22} />
                   </div>
-                  <h3 className="mt-5 text-2xl font-bold text-ink">{card.title}</h3>
-                  <p className="mt-3 text-base leading-7 text-slate-600">{card.description}</p>
+                  <h3 className="mt-5 text-2xl font-bold text-ink">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-7 text-slate-600">
+                    {card.description}
+                  </p>
                 </motion.div>
               );
             })}

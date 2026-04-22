@@ -37,12 +37,15 @@ export default function ContactSection() {
       setForm(initialForm);
       setStatus({
         type: "success",
-        message: "Your inquiry has been submitted successfully. Our team will contact you soon.",
+        message:
+          "Your inquiry has been submitted successfully. Our team will contact you soon.",
       });
     } catch (error) {
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong while submitting your inquiry.",
+        message:
+          error.message ||
+          "Something went wrong while submitting your inquiry.",
       });
     } finally {
       setSubmitting(false);
@@ -71,10 +74,16 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="rounded-[2rem] bg-ink p-8 text-white shadow-panel"
           >
-            <p className="font-display text-sm uppercase tracking-[0.35em] text-brand-200">Talk to us</p>
-            <h3 className="mt-4 text-3xl font-bold">Ready to begin your student journey?</h3>
+            <p className="font-display text-sm uppercase tracking-[0.35em] text-brand-200">
+              Talk to us
+            </p>
+            <h3 className="mt-4 text-3xl font-bold">
+              Ready to begin your student journey?
+            </h3>
             <p className="mt-4 text-base leading-7 text-slate-200">
-              Keep this section focused and direct so students can act quickly. The admin dashboard will then help your team manage leads efficiently.
+              Keep this section focused and direct so students can act quickly.
+              The admin dashboard will then help your team manage leads
+              efficiently.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -148,7 +157,9 @@ export default function ContactSection() {
               />
 
               <label className="md:col-span-2">
-                <span className="mb-2 block text-sm font-bold text-slate-700">Preferred Country</span>
+                <span className="mb-2 block text-sm font-bold text-slate-700">
+                  Preferred Country
+                </span>
                 <select
                   name="preferredCountry"
                   value={form.preferredCountry}
@@ -166,7 +177,9 @@ export default function ContactSection() {
               </label>
 
               <label className="md:col-span-2">
-                <span className="mb-2 block text-sm font-bold text-slate-700">Message</span>
+                <span className="mb-2 block text-sm font-bold text-slate-700">
+                  Message
+                </span>
                 <textarea
                   name="message"
                   rows="5"
@@ -193,9 +206,11 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {submitting ? <LoaderCircle className="animate-spin" size={18} /> : null}
+              {submitting ? (
+                <LoaderCircle className="animate-spin" size={18} />
+              ) : null}
               Submit Inquiry
             </button>
           </motion.form>
@@ -208,7 +223,9 @@ export default function ContactSection() {
 function Field({ label, name, type = "text", value, onChange, placeholder }) {
   return (
     <label>
-      <span className="mb-2 block text-sm font-bold text-slate-700">{label}</span>
+      <span className="mb-2 block text-sm font-bold text-slate-700">
+        {label}
+      </span>
       <input
         type={type}
         name={name}

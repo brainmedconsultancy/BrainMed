@@ -35,29 +35,67 @@ export const services = [
 
 export const countries = [
   {
-    name: "Canada",
-    description: "Excellent post-study work options and career-friendly education pathways.",
-    services: ["UG & PG admissions", "Visa support", "Scholarship guidance"],
-  },
-  {
-    name: "Australia",
-    description: "Globally recognized universities with strong student support and employability outcomes.",
-    services: ["University selection", "GTE guidance", "Application filing"],
-  },
-  {
-    name: "United Kingdom",
-    description: "One-year master's programs and a broad range of academic specializations.",
-    services: ["CAS support", "Visa documents", "Accommodation help"],
-  },
-  {
-    name: "United States",
-    description: "Research-led institutions and flexible course structures for ambitious students.",
+    name: "USA",
+    flagUrl: "https://flagcdn.com/w80/us.png",
+    description:
+      "World-class research institutions and flexible course structures for ambitious global students.",
     services: ["University shortlisting", "SOP support", "Interview prep"],
   },
   {
-    name: "Germany",
-    description: "High-value education with growing opportunities in engineering, business, and tech.",
-    services: ["Public/private options", "Course matching", "Visa assistance"],
+    name: "UK",
+    flagUrl: "https://flagcdn.com/w80/gb.png",
+    description:
+      "Accelerated master's programs and a prestigious tradition of academic excellence.",
+    services: ["CAS support", "Visa documents", "Accommodation help"],
+  },
+  {
+    name: "China",
+    flagUrl: "https://flagcdn.com/w80/cn.png",
+    description:
+      "Rapidly advancing tech hubs and affordable, high-ranking medical and engineering programs.",
+    services: ["HSK prep guidance", "Scholarship search", "Visa processing"],
+  },
+  {
+    name: "Russia",
+    flagUrl: "https://flagcdn.com/w80/ru.png",
+    description:
+      "Renowned for specialized medical and technical degrees with globally recognized standards.",
+    services: ["Direct admissions", "Document translation", "Hostel booking"],
+  },
+  {
+    name: "Singapore",
+    flagUrl: "https://flagcdn.com/w80/sg.png",
+    description:
+      "A global financial hub offering elite business and technology education in the heart of Asia.",
+    services: ["Student Pass help", "Internship pathways", "Credit transfer"],
+  },
+  {
+    name: "Georgia",
+    flagUrl: "https://flagcdn.com/w80/ge.png",
+    description:
+      "Emerging destination for high-quality, affordable medical education and European lifestyle.",
+    services: ["MBBS admissions", "TRC assistance", "Apostille services"],
+  },
+  {
+    name: "Malaysia",
+    flagUrl: "https://flagcdn.com/w80/my.png",
+    description:
+      "A multicultural hub with branch campuses of top global universities and low cost of living.",
+    services: ["EMGS processing", "Course matching", "Pre-departure briefing"],
+  },
+  {
+    name: "Kyrgyzstan",
+    flagUrl: "https://flagcdn.com/w80/kg.png",
+    description:
+      "Leading hub for affordable medical degrees with a curriculum focused on international standards.",
+    services: ["MCI/NMC coaching", "Admission letters", "Travel support"],
+  },
+  {
+    name: "Turkey",
+    flagUrl: "https://flagcdn.com/w80/tr.png",
+    description:
+      "Bridge between East and West, offering unique cultural experiences and modern academic facilities.",
+    services: ["YÖS exam guidance", "Equivalency help", "Residence permits"],
   },
 ];
 
@@ -66,37 +104,43 @@ export const colleges = [
     name: "University of Toronto",
     country: "Canada",
     courses: ["Computer Science", "Business Analytics", "Public Health"],
-    description: "A research-intensive university with strong global reputation and diverse student life.",
+    description:
+      "A research-intensive university with strong global reputation and diverse student life.",
   },
   {
     name: "Monash University",
     country: "Australia",
     courses: ["Data Science", "Nursing", "Mechanical Engineering"],
-    description: "Known for industry-aligned programs and strong international student support.",
+    description:
+      "Known for industry-aligned programs and strong international student support.",
   },
   {
     name: "University of Manchester",
     country: "United Kingdom",
     courses: ["Finance", "AI", "Biotechnology"],
-    description: "A leading UK institution with broad postgraduate options and employability focus.",
+    description:
+      "A leading UK institution with broad postgraduate options and employability focus.",
   },
   {
     name: "Arizona State University",
     country: "United States",
     courses: ["Information Systems", "Construction Management", "Psychology"],
-    description: "Offers innovation-driven programs and multiple pathways for international students.",
+    description:
+      "Offers innovation-driven programs and multiple pathways for international students.",
   },
   {
     name: "Technical University of Munich",
     country: "Germany",
     courses: ["Robotics", "Management", "Automotive Engineering"],
-    description: "Highly respected for engineering and technology programs in Europe.",
+    description:
+      "Highly respected for engineering and technology programs in Europe.",
   },
   {
     name: "University of Alberta",
     country: "Canada",
     courses: ["Petroleum Engineering", "MBA", "Pharmacy"],
-    description: "A solid option for students seeking research strength and career-focused programs.",
+    description:
+      "A solid option for students seeking research strength and career-focused programs.",
   },
 ];
 
@@ -121,47 +165,76 @@ export const testimonials = [
   },
 ];
 
-export const mcaFaqChats = [
+export const mbbsFaqChats = [
   {
-    question: "Why should I choose MCA after graduation?",
+    question: "Can I study MBBS abroad after completing 12th grade?",
     answer:
-      "MCA is a strong option for students who want deeper knowledge in software development, application architecture, databases, cloud, and real-world IT problem solving. It helps bridge the gap between basic graduation and the technical skills companies expect for serious software roles.",
-    highlight: "Career clarity",
+      "Yes, students who have completed 12th with Physics, Chemistry, and Biology can apply for MBBS in many foreign universities. Eligibility requirements usually include minimum qualifying marks and NEET qualification as per current regulations.",
+    highlight: "Eligibility",
   },
   {
-    question: "Is MCA really required for getting into the IT field?",
+    question: "Is NEET mandatory for studying MBBS abroad?",
     answer:
-      "It is not mandatory for every IT job, but it becomes valuable when you want structured learning, stronger fundamentals, better campus opportunities, and a more specialized profile. For many students, MCA creates a more confident path into development, testing, data, and system-based roles.",
-    highlight: "Structured growth",
+      "Yes, qualifying NEET is mandatory for Indian students who wish to study MBBS abroad and practice medicine in India later. It is an essential requirement set by the National Medical Commission (NMC).",
+    highlight: "NEET requirement",
   },
   {
-    question: "Who should seriously consider doing MCA?",
+    question: "What is the total cost of studying MBBS in foreign countries?",
     answer:
-      "Students from BCA, B.Sc. Computer Science, IT, mathematics, or even related technical backgrounds who want to build a long-term tech career should consider MCA. It especially helps if you feel your current degree gave you only surface-level exposure and you want stronger depth before entering the market.",
-    highlight: "Best fit",
+      "The total cost depends on the country and university, but many options are more affordable compared to private medical colleges in India. Fees typically include tuition, hostel, food, and other basic expenses.",
+    highlight: "Fees",
   },
   {
-    question: "What are the career benefits after MCA?",
+    question: "Which countries are best for studying MBBS abroad?",
     answer:
-      "MCA can improve your chances for roles like software developer, full-stack engineer, QA analyst, data-focused associate, systems engineer, and application support specialist. It also strengthens your profile for higher salary growth, better project exposure, and international study or work options later.",
-    highlight: "Career outcomes",
+      "Popular destinations for MBBS include countries known for recognized universities, affordable fees, and quality education. The best choice depends on your budget, academic profile, and career plans.",
+    highlight: "Countries",
+  },
+  {
+    question: "Will the MBBS degree from abroad be valid in India?",
+    answer:
+      "Yes, degrees from recognized international medical universities are valid. After completing MBBS abroad, students must pass the required licensing examination in India to practice medicine.",
+    highlight: "Recognition",
+  },
+  {
+    question: "Do you provide complete support for admission and visa process?",
+    answer:
+      "Yes, we provide end-to-end assistance including university selection, application submission, documentation, admission processing, and visa guidance to ensure a smooth admission journey.",
+    highlight: "Full support",
   },
 ];
 
 export const teamMembers = [
   {
-    name: "Rhea Kapoor",
-    role: "Founder & Lead Counselor",
-    description: "Focuses on student strategy, profile evaluation, and destination planning.",
+    name: "Ayaan Malik",
+    role: "Admissions Strategist",
+    company: "Student Success Desk",
+    image: "/team/m1.jpeg",
+    description:
+      "Supports application planning, profile direction, and smooth student onboarding.",
   },
   {
-    name: "Daniel Joseph",
-    role: "Visa Support Specialist",
-    description: "Guides students through documentation, verification, and interview readiness.",
+    name: "Zayan Sheikh",
+    role: "Global Outreach Lead",
+    company: "International Relations Wing",
+    image: "/team/m2.jpeg",
+    description:
+      "Builds university connections and helps students explore the right study destinations.",
   },
   {
-    name: "Meera Iyer",
-    role: "Admissions Manager",
-    description: "Coordinates application timelines, college communication, and offer management.",
+    name: "Rehan Qureshi",
+    role: "Operations Coordinator",
+    company: "Admissions Operations Team",
+    image: "/team/m3.jpeg",
+    description:
+      "Keeps documentation, timelines, and internal follow-ups aligned across every application stage.",
+  },
+  {
+    name: "Sara Khan",
+    role: "Student Support Executive",
+    company: "Care & Guidance Team",
+    image: "/team/w1.jpeg",
+    description:
+      "Handles student communication, routine guidance, and day-to-day support during the process.",
   },
 ];

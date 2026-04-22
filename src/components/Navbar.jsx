@@ -1,4 +1,4 @@
-import { Menu, PlaneTakeoff, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -18,19 +18,31 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
       <nav className="glass-panel mx-auto flex max-w-7xl items-center justify-between rounded-full px-5 py-3 shadow-soft">
-        <a href="#home" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-600 text-white">
-            <PlaneTakeoff size={20} />
+        <a href="#home" className="flex items-center gap-3 sm:gap-4">
+          <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-brand-100 bg-white shadow-sm sm:h-14 sm:w-14">
+            <img
+              src="/logo.png"
+              alt="BrainMed Logo"
+              className="h-full w-full scale-[1.08] object-cover"
+            />
           </div>
           <div>
-            <p className="font-display text-lg font-bold text-ink">Global Bridge</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Study Abroad</p>
+            <p className="font-display text-lg font-bold leading-none text-ink sm:text-xl">
+              BrainMed
+            </p>
+            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+              Study Abroad
+            </p>
           </div>
         </a>
 
         <div className="hidden items-center gap-6 lg:flex">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm font-semibold text-slate-700 transition hover:text-brand-600">
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-semibold text-slate-700 transition hover:text-brand-600"
+            >
               {link.label}
             </a>
           ))}
