@@ -16,9 +16,9 @@ const supportItems = [
 ];
 
 const contactItems = [
-  { label: "+91 98765 43210", icon: Phone },
-  { label: "hello@globalbridge.com", icon: Mail },
-  { label: "Bengaluru, India", icon: MapPin },
+  { label: "+91 91641 12779", icon: Phone },
+  { label: "brainmedconsultancy@gmail.com", icon: Mail },
+  { label: "Hassan, Karnataka, India", icon: MapPin },
 ];
 
 export default function Footer() {

@@ -71,7 +71,7 @@ export default function CountryDetails() {
         <section className="px-4 pb-12 pt-10 md:pb-16 md:pt-16">
           <div className="mx-auto max-w-7xl">
             <div className="rounded-[2.5rem] bg-[radial-gradient(circle_at_top_left,rgba(72,159,255,0.22),transparent_30%),radial-gradient(circle_at_top_right,rgba(52,211,153,0.18),transparent_28%),linear-gradient(135deg,#08111F_0%,#10315f_54%,#114BA7_100%)] p-8 text-white shadow-panel md:p-12">
-              <div className="flex flex-wrap items-center gap-2 text-sm text-white/80">
+              <div className="flex flex-wrap items-center gap-2 text-sm text-white/80 ">
                 <Link
                   to="/"
                   className="inline-flex items-center gap-2 transition hover:text-white"
@@ -153,7 +153,7 @@ export default function CountryDetails() {
           <div className="mx-auto max-w-7xl">
             <div className="flex items-end justify-between gap-6">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-500">
                   Country Overview
                 </p>
                 <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">
@@ -176,7 +176,7 @@ export default function CountryDetails() {
 
         <section className="px-4 py-12 md:py-16">
           <div className="mx-auto max-w-7xl rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-500">
               Services Included
             </p>
             <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">
@@ -194,7 +194,7 @@ export default function CountryDetails() {
 
         <section className="px-4 pb-20 pt-12 md:pb-24 md:pt-16">
           <div className="mx-auto max-w-7xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-500">
               Top Medical Universities
             </p>
             <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">

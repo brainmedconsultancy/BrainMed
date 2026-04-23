@@ -116,27 +116,27 @@ export default function CollegeCard({ college, index }) {
       <div className="p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-500">
               {college.rank}
             </p>
             <h3 className="mt-3 text-2xl font-bold text-ink">{college.name}</h3>
           </div>
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-500">
             <GraduationCap size={22} />
           </div>
         </div>
 
         <div className="mt-5 grid gap-3 text-sm text-slate-600">
           <div className="flex items-center gap-3">
-            <Building2 size={16} className="text-brand-500" />
+            <Building2 size={16} className="text-emerald-500" />
             <span>Founded in {college.founded}</span>
           </div>
           <div className="flex items-center gap-3">
-            <MapPin size={16} className="text-brand-500" />
+            <MapPin size={16} className="text-emerald-500" />
             <span>{college.location}</span>
           </div>
           <div className="flex items-center gap-3">
-            <GraduationCap size={16} className="text-brand-500" />
+            <GraduationCap size={16} className="text-emerald-500" />
             <span>{college.medium}</span>
           </div>
           <div className="flex items-center gap-3">
@@ -153,7 +153,7 @@ export default function CollegeCard({ college, index }) {
         {hasMapData && (
           <button
             onClick={handleMapClick}
-            className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-brand-100 bg-brand-50 py-2.5 text-sm font-medium text-brand-600 transition-all hover:bg-brand-100 hover:border-brand-200 hover:text-brand-700 active:scale-[0.98]"
+            className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-100 bg-emerald-50 py-2.5 text-sm font-medium text-emerald-600 transition-all hover:bg-brand-100 hover:border-brand-200 hover:text-brand-700 active:scale-[0.98]"
           >
             <MapPin size={15} />
             View on Google Maps

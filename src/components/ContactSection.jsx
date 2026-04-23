@@ -93,7 +93,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold">Phone</p>
-                  <p className="text-slate-300">+91 98765 43210</p>
+                  <p className="text-slate-300">+91 91641 12779</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -102,7 +102,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold">Email</p>
-                  <p className="text-slate-300">hello@globalbridge.com</p>
+                  <p className="text-slate-300">brainmedconsultancy@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -111,7 +111,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold">Office</p>
-                  <p className="text-slate-300">Bengaluru, India</p>
+                  <p className="text-slate-300">Hassan, Karnataka, India</p>
                 </div>
               </div>
             </div>
@@ -193,11 +193,10 @@ export default function ContactSection() {
 
             {status.message && (
               <div
-                className={`mt-5 rounded-2xl px-4 py-3 text-sm font-semibold ${
-                  status.type === "success"
-                    ? "bg-emerald-50 text-emerald-700"
-                    : "bg-rose-50 text-rose-700"
-                }`}
+                className={`mt-5 rounded-2xl px-4 py-3 text-sm font-semibold ${status.type === "success"
+                  ? "bg-emerald-50 text-emerald-700"
+                  : "bg-rose-50 text-rose-700"
+                  }`}
               >
                 {status.message}
               </div>

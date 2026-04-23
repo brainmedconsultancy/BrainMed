@@ -4,7 +4,7 @@ export default function ServicesList({ services }) {
       {services.map((service) => (
         <span
           key={service}
-          className="rounded-full border border-brand-100 bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700"
+          className="rounded-full border border-emerald-100 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-500"
         >
           {service}
         </span>
