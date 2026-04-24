@@ -86,72 +86,17 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10"
+            className="relative z-10 flex items-center justify-center"
           >
             <div className="absolute -left-10 top-16 hidden h-28 w-28 rounded-full bg-accent-300/40 blur-3xl md:block" />
             <div className="absolute -right-8 bottom-10 hidden h-36 w-36 rounded-full bg-brand-300/40 blur-3xl md:block" />
 
-            <div className="relative overflow-hidden rounded-[2rem] bg-ink p-6 shadow-panel md:p-8">
-              <div className="absolute inset-0 bg-grid-fade bg-[size:26px_26px] opacity-20" />
-              <div className="relative space-y-5">
-                <div className="rounded-[1.75rem] bg-white/10 p-5 text-white backdrop-blur">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm uppercase tracking-[0.3em] text-brand-200">
-                        Advisory Flow
-                      </p>
-                      <h3 className="mt-2 text-2xl font-bold">
-                        From first call to campus arrival
-                      </h3>
-                    </div>
-                    <Globe className="text-accent-300" />
-                  </div>
-                  <div className="mt-6 grid gap-4">
-                    {[
-                      "Profile review and destination match",
-                      "College shortlist with budget planning",
-                      "Application and visa documentation support",
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3"
-                      >
-                        <BadgeCheck size={18} className="text-accent-300" />
-                        <span className="text-sm font-medium text-slate-100">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-[1.5rem] bg-white p-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                      Top Focus
-                    </p>
-                    <p className="mt-3 text-2xl font-extrabold text-ink">
-                      Career-first planning
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      We help students make destination choices that also make
-                      sense for long-term work goals.
-                    </p>
-                  </div>
-                  <div className="rounded-[1.5rem] bg-gradient-to-b from-emerald-400 to-cyan-400 bg-opacity-20 p-5 text-white">
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-100">
-                      Response Time
-                    </p>
-                    <p className="mt-3 text-2xl font-extrabold">
-                      Fast inquiry follow-up
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-brand-50">
-                      Your team can review form submissions quickly from the
-                      admin dashboard and act without delay.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative w-full max-w-lg lg:max-w-none flex justify-center">
+              <img
+                src="/hero-doctors-6.png"
+                alt="Medical Professionals"
+                className="relative z-10 w-full max-w-[95%] md:max-w-full object-contain drop-shadow-2xl"
+              />
             </div>
           </motion.div>
         </div>
