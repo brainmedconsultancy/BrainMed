@@ -1,6 +1,7 @@
 import { Suspense, lazy, } from "react";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ui/ScrollToTop";
+import FloatingCallButton from "./components/ui/FloatingCallButton";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
@@ -11,6 +12,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <FloatingCallButton />
       <Suspense
         fallback={
           <div className="flex min-h-screen items-center justify-center">
