@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { teamMembers } from "../data/siteData";
-import SectionHeading from "./SectionHeading";
+import { teamMembers } from "../../data/siteData";
+import SectionHeading from "../layout/SectionHeading";
 
 export default function TeamSection() {
   return (

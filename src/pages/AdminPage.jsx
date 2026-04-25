@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-import AdminDashboard from "../components/AdminDashboard";
-import AdminLogin from "../components/AdminLogin";
+import AdminDashboard from "../components/admin/AdminDashboard";
+import AdminLogin from "../components/admin/AdminLogin";
 import { auth, hasFirebaseConfig } from "../lib/firebase";
 
 export default function AdminPage() {

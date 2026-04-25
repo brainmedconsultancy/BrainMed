@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import { LoaderCircle, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../lib/firebase";
-import SectionHeading from "./SectionHeading";
+import { db } from "../../lib/firebase";
+import SectionHeading from "../layout/SectionHeading";
 
 const initialForm = {
   fullName: "",
   phone: "",
+  parentPhone: "",
   email: "",
   preferredCountry: "",
   message: "",
@@ -27,6 +28,7 @@ export default function ContactSection() {
       await addDoc(collection(db, "students"), {
         name: form.fullName,
         phone: form.phone,
+        parentPhone: form.parentPhone,
         email: form.email,
         courseInterested: "MBBS",
         countryInterested: form.preferredCountry,
@@ -65,8 +67,8 @@ export default function ContactSection() {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Contact"
-          title="Let students reach out in one simple step."
-          description="This inquiry form is connected directly to your CRM, so submissions flow seamlessly into the Admin Dashboard's Student Directory."
+          title="Start Your Medical Journey With BrainMed"
+          description="Have questions about studying MBBS abroad? Our expert counselors are ready to help you plan your career and guide you through the admission process."
         />
 
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
@@ -84,9 +86,7 @@ export default function ContactSection() {
               Ready to begin your student journey?
             </h3>
             <p className="mt-4 text-base leading-7 text-slate-200">
-              Keep this section focused and direct so students can act quickly.
-              The admin dashboard will then help your team manage leads
-              efficiently.
+              We provide comprehensive end-to-end guidance for MBBS admissions abroad. From university selection to visa processing and post-arrival support, our experienced team is here for you. Reach out to us for a free counseling session today.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -142,6 +142,14 @@ export default function ContactSection() {
                 value={form.phone}
                 onChange={updateField}
                 placeholder="Phone number"
+              />
+              <Field
+                label="Parent/Father Number"
+                name="parentPhone"
+                value={form.parentPhone}
+                onChange={updateField}
+                placeholder="Alternative number"
+                required={false}
               />
               <Field
                 label="Email Address"
@@ -218,7 +226,7 @@ export default function ContactSection() {
   );
 }
 
-function Field({ label, name, type = "text", value, onChange, placeholder }) {
+function Field({ label, name, type = "text", value, onChange, placeholder, required = true }) {
   return (
     <label>
       <span className="mb-2 block text-sm font-bold text-slate-700">
@@ -227,7 +235,7 @@ function Field({ label, name, type = "text", value, onChange, placeholder }) {
       <input
         type={type}
         name={name}
-        required
+        required={required}
         value={value}
         onChange={onChange}
         placeholder={placeholder}

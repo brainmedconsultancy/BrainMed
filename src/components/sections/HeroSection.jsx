@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, BadgeCheck, Globe, Sparkles } from "lucide-react";
-import { stats } from "../data/siteData";
+import { stats } from "../../data/siteData";
 
 export default function HeroSection() {
   return (
@@ -96,6 +96,10 @@ export default function HeroSection() {
                 src="/hero-doctors-6.png"
                 alt="Medical Professionals"
                 className="relative z-10 w-full max-w-[95%] md:max-w-full object-contain drop-shadow-2xl"
+                style={{
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                  maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
+                }}
               />
             </div>
           </motion.div>

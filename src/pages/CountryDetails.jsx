@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { ChevronRight, Home, MoveLeft } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import CollegeCard from "../components/CollegeCard";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import OverviewItem from "../components/OverviewItem";
-import ServicesList from "../components/ServicesList";
+import CollegeCard from "../components/ui/CollegeCard";
+import Footer from "../components/layout/Footer";
+import Navbar from "../components/layout/Navbar";
+import OverviewItem from "../components/ui/OverviewItem";
+import ServicesList from "../components/ui/ServicesList";
 import { countryDetails } from "../data/countryDetailsData";
 import { countries } from "../data/siteData";
 import { useNavigate } from "react-router-dom";

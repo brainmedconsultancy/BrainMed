@@ -1,6 +1,6 @@
 import { LoaderCircle, LockKeyhole } from "lucide-react";
 import { useState } from "react";
-import { loginAdmin } from "../lib/auth";
+import { loginAdmin } from "../../lib/auth";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");

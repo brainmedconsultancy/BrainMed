@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { db } from "../../lib/firebase";
 
 const COUNTRIES = ["Russia", "USA", "Georgia", "Kyrgyzstan", "UK", "China", "Singapore", "Malaysia", "Turkey"];
 
 const initialForm = {
   name: "",
   phone: "",
+  parentPhone: "",
   email: "",
   countryInterested: COUNTRIES[0],
   marks: "",
@@ -31,6 +32,7 @@ export default function StudentInquiryForm() {
       await addDoc(collection(db, "students"), {
         name: form.name,
         phone: form.phone,
+        parentPhone: form.parentPhone,
         email: form.email,
         countryInterested: form.countryInterested,
         pucMarks: form.marks, // Saving as pucMarks to map perfectly into your Admin Dashboard CRM
@@ -69,6 +71,11 @@ export default function StudentInquiryForm() {
       <div>
         <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#475569', fontSize: '0.875rem' }}>Phone</label>
         <input required type="tel" name="phone" value={form.phone} onChange={updateField} style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc' }} />
+      </div>
+      
+      <div>
+        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#475569', fontSize: '0.875rem' }}>Parent/Father Number (Optional)</label>
+        <input type="tel" name="parentPhone" value={form.parentPhone} onChange={updateField} style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc' }} />
       </div>
       
       <div>

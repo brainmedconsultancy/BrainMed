@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { countries } from "../data/siteData";
-import CountryCard from "./CountryCard";
-import SectionHeading from "./SectionHeading";
+import { countries } from "../../data/siteData";
+import CountryCard from "../ui/CountryCard";
+import SectionHeading from "../layout/SectionHeading";
 
 export default function CountriesSection() {
   const initialVisibleCount = 3;

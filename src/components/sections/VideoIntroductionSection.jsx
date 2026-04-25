@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "../layout/SectionHeading";
 
 const defaultProps = {
   sectionId: "video-introduction",

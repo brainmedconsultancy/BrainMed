@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, PhoneCall } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import { db } from "../../lib/firebase";
 
 const COUNTRIES = ["Russia", "USA", "Georgia", "Kyrgyzstan", "UK", "China", "Singapore", "Malaysia", "Turkey"];
 
@@ -12,6 +12,7 @@ const CallbackPopup = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    parentPhone: '',
     countryInterested: COUNTRIES[0]
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -69,6 +70,7 @@ const CallbackPopup = () => {
       await addDoc(collection(db, "students"), {
         name: formData.name.trim(),
         phone: formData.phone.trim(),
+        parentPhone: formData.parentPhone.trim(),
         email: "", // Not asked in popup but kept for schema consistency
         countryInterested: formData.countryInterested,
         courseInterested: "MBBS",
@@ -189,6 +191,17 @@ const CallbackPopup = () => {
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       placeholder="10-digit mobile number"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-3.5 md:py-4 text-sm outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Parent/Father Number</label>
+                    <input 
+                      type="tel" 
+                      value={formData.parentPhone}
+                      onChange={(e) => setFormData({...formData, parentPhone: e.target.value})}
+                      placeholder="Alternative contact"
                       className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-3.5 md:py-4 text-sm outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10"
                     />
                   </div>

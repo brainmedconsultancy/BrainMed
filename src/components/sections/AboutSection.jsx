@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Award, Compass, Rocket } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "../layout/SectionHeading";
 
 const cards = [
   {
@@ -48,10 +48,7 @@ export default function AboutSection() {
               Strong guidance, honest options, and a process that feels managed.
             </h3>
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-200">
-              From company background and years of experience to practical
-              application support, this site is designed to present your
-              consultancy as professional, responsive, and trustworthy. The
-              structure also keeps content easy to update later.
+              At BrainMed, we offer personalized guidance for students aiming to study MBBS abroad. Our expert team ensures a smooth, transparent, and hassle-free admission process, handling everything from university selection to visa assistance.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.5rem] bg-white/10 p-5">

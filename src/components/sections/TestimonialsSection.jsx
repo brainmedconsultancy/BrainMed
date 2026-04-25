@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Pause, Play, Quote, Volume2 } from "lucide-react";
-import { audioTestimonials, testimonials } from "../data/siteData";
-import SectionHeading from "./SectionHeading";
+import { audioTestimonials, testimonials } from "../../data/siteData";
+import SectionHeading from "../layout/SectionHeading";
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) {

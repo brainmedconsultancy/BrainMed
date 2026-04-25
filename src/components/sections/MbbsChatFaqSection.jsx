@@ -10,8 +10,8 @@ import {
   Search,
   Send,
 } from "lucide-react";
-import { mbbsFaqChats } from "../data/siteData";
-import SectionHeading from "./SectionHeading";
+import { mbbsFaqChats } from "../../data/siteData";
+import SectionHeading from "../layout/SectionHeading";
 
 export default function McaChatFaqSection() {
   return (

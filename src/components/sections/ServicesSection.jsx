@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { BriefcaseBusiness } from "lucide-react";
-import { services } from "../data/siteData";
-import SectionHeading from "./SectionHeading";
+import { services } from "../../data/siteData";
+import SectionHeading from "../layout/SectionHeading";
 
 export default function ServicesSection() {
   return (
