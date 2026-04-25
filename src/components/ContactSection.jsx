@@ -1,15 +1,14 @@
 import { motion } from "framer-motion";
 import { LoaderCircle, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
-import { countries } from "../data/siteData";
-import { createSubmission } from "../lib/submissions";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../lib/firebase";
 import SectionHeading from "./SectionHeading";
 
 const initialForm = {
   fullName: "",
   phone: "",
   email: "",
-  preferredCourse: "",
   preferredCountry: "",
   message: "",
 };
@@ -25,13 +24,17 @@ export default function ContactSection() {
     setStatus({ type: "", message: "" });
 
     try {
-      await createSubmission({
+      await addDoc(collection(db, "students"), {
         name: form.fullName,
         phone: form.phone,
         email: form.email,
-        course: form.preferredCourse,
-        country: form.preferredCountry,
-        message: form.message,
+        courseInterested: "MBBS",
+        countryInterested: form.preferredCountry,
+        source: "online",
+        status: "new",
+        notes: form.message.trim(),
+        notesHistory: [],
+        createdAt: serverTimestamp(),
       });
 
       setForm(initialForm);
@@ -63,7 +66,7 @@ export default function ContactSection() {
         <SectionHeading
           eyebrow="Contact"
           title="Let students reach out in one simple step."
-          description="This inquiry form is connected to Firebase Firestore, so submissions can flow directly into the admin dashboard without requiring student accounts."
+          description="This inquiry form is connected directly to your CRM, so submissions flow seamlessly into the Admin Dashboard's Student Directory."
         />
 
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
@@ -148,14 +151,6 @@ export default function ContactSection() {
                 onChange={updateField}
                 placeholder="you@example.com"
               />
-              <Field
-                label="Preferred Course"
-                name="preferredCourse"
-                value={form.preferredCourse}
-                onChange={updateField}
-                placeholder="MBA, Data Science, Nursing..."
-              />
-
               <label className="md:col-span-2">
                 <span className="mb-2 block text-sm font-bold text-slate-700">
                   Preferred Country
@@ -168,11 +163,15 @@ export default function ContactSection() {
                   className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500"
                 >
                   <option value="">Select a country</option>
-                  {countries.map((country) => (
-                    <option key={country.name} value={country.name}>
-                      {country.name}
-                    </option>
-                  ))}
+                  <option value="Russia">Russia</option>
+                  <option value="USA">USA</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                  <option value="UK">UK</option>
+                  <option value="China">China</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Turkey">Turkey</option>
                 </select>
               </label>
 

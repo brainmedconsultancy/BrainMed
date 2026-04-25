@@ -1,4 +1,5 @@
 import AboutSection from "../components/AboutSection";
+import CallbackPopup from "../components/CallbackPopup";
 import ContactSection from "../components/ContactSection";
 import CountriesSection from "../components/CountriesSection";
 import Footer from "../components/Footer";
@@ -14,6 +15,7 @@ export default function HomePage() {
   return (
     <div className="overflow-x-hidden">
       <Navbar />
+      <CallbackPopup />
       <main>
         <HeroSection />
         <AboutSection />

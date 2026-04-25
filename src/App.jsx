@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, } from "react";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -7,6 +7,7 @@ const AdminPage = lazy(() => import("./pages/AdminPage"));
 const CountryDetails = lazy(() => import("./pages/CountryDetails"));
 
 export default function App() {
+
   return (
     <>
       <ScrollToTop />

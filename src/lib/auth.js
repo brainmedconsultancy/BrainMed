@@ -9,12 +9,6 @@ export async function loginAdmin(email, password) {
   }
 
   const credential = await signInWithEmailAndPassword(auth, email, password);
-  const normalizedEmail = credential.user.email?.toLowerCase().trim();
-
-  if (allowedAdminEmail && normalizedEmail !== allowedAdminEmail) {
-    await signOut(auth);
-    throw new Error("This account is not authorized to access the admin dashboard.");
-  }
 
   return credential;
 }
