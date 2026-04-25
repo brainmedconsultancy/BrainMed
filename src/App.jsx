@@ -1,5 +1,5 @@
 import { Suspense, lazy, } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import FloatingCallButton from "./components/ui/FloatingCallButton";
 
@@ -9,10 +9,13 @@ const CountryDetails = lazy(() => import("./pages/CountryDetails"));
 
 export default function App() {
 
+  const location = useLocation();
+  const isAdminPath = location.pathname.startsWith('/admin');
+
   return (
     <>
       <ScrollToTop />
-      <FloatingCallButton />
+      {!isAdminPath && <FloatingCallButton />}
       <Suspense
         fallback={
           <div className="flex min-h-screen items-center justify-center">
