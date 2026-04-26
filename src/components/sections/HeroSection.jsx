@@ -25,7 +25,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.7 }}
-              className="mt-6 max-w-3xl font-display text-5xl font-bold leading-tight text-ink md:text-7xl"
+              className="mt-6 max-w-3xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl md:text-7xl"
             >
               Turn your study abroad plan into a confident next move.
             </motion.h1>
@@ -34,7 +34,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.18, duration: 0.7 }}
-              className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 md:text-xl"
+              className="mt-6 max-w-2xl text-base leading-7 text-slate-600 md:text-xl md:leading-8"
             >
               BrainMed helps students choose the right country, shortlist
               colleges, manage applications, and navigate visas with clarity
@@ -45,18 +45,18 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.26, duration: 0.7 }}
-              className="mt-8 flex flex-col gap-4 sm:flex-row"
+              className="mt-8 flex flex-col gap-3 sm:flex-row md:gap-4"
             >
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400 px-8 text-sm font-bold text-white transition hover:scale-[1.02] active:scale-[0.98] sm:h-14"
               >
                 Apply Now
                 <ArrowRight size={16} />
               </a>
               <a
                 href="#colleges"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-4 text-sm font-bold text-slate-900 transition hover:border-brand-200 hover:text-brand-700"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-sm font-bold text-slate-900 transition hover:border-brand-200 hover:text-brand-700 active:scale-[0.98] sm:h-14"
               >
                 Explore Colleges
               </a>
@@ -110,7 +110,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12, duration: 0.8 }}
-          className="font-display select-none whitespace-nowrap  text-[4.1rem] font-black uppercase tracking-[0.14em] text-emerald-400 drop-shadow-[0_10px_34px_rgba(52,211,153,0.3)] sm:text-[5.8rem] md:text-[7.8rem] lg:text-[9.4rem]"
+          className="font-display select-none whitespace-nowrap text-[3.2rem] font-black uppercase tracking-[0.14em] text-emerald-400 drop-shadow-[0_10px_34px_rgba(52,211,153,0.3)] sm:text-[5.8rem] md:text-[7.8rem] lg:text-[9.4rem]"
         >
           BrainMed
         </motion.p>

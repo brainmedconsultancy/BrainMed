@@ -10,8 +10,23 @@ import ServicesSection from "../components/sections/ServicesSection";
 import TeamSection from "../components/sections/TeamSection";
 import TestimonialsSection from "../components/sections/TestimonialsSection";
 import VideoIntroductionSection from "../components/sections/VideoIntroductionSection";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function HomePage() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [hash]);
+
   return (
     <div className="overflow-x-hidden">
       <Navbar />

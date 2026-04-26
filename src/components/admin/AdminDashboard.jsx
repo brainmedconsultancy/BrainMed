@@ -154,8 +154,8 @@ export default function AdminDashboard({ user }) {
               <h1 className="mt-3 text-3xl font-bold text-ink md:text-4xl">Admin Dashboard</h1>
               <p className="mt-2 text-slate-600">Signed in as {user?.email}</p>
             </div>
-            <div className="flex gap-4">
-              <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1">
+            <div className="flex flex-wrap gap-3">
+              <div className="flex flex-1 items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1 sm:flex-initial">
                 <select 
                   value={exportMonth} 
                   onChange={(e) => setExportMonth(e.target.value)}
@@ -166,31 +166,32 @@ export default function AdminDashboard({ user }) {
                 <button
                   type="button"
                   onClick={handleExportCSV}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-bold text-brand-700 transition hover:bg-brand-100"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-brand-50 px-4 text-sm font-bold text-brand-700 transition hover:bg-brand-100"
                 >
-                  Export CSV
+                  Export
                 </button>
               </div>
               <button
                 type="button"
                 onClick={() => setIsCreateModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-700"
+                className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-brand-600 px-5 text-sm font-bold text-white transition hover:bg-brand-700 sm:flex-initial"
               >
                 Create Student
               </button>
               <button
                 type="button"
                 onClick={logoutAdmin}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:border-brand-200 hover:text-brand-700"
+                className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-4 text-sm font-bold text-slate-800 transition hover:border-brand-200 hover:text-brand-700 sm:px-5"
+                aria-label="Logout"
               >
                 <LogOut size={16} />
-                Logout
+                <span className="ml-2 hidden sm:inline">Logout</span>
               </button>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-6">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-5 md:gap-6">
           <div className="rounded-[1.5rem] bg-white p-6 shadow-soft text-center">
             <p className="text-sm font-bold uppercase tracking-wider text-slate-500">Total</p>
             <p className="mt-2 text-3xl font-bold text-brand-600">{stats.total}</p>
@@ -260,19 +261,19 @@ export default function AdminDashboard({ user }) {
         </div>
 
         <div className="mt-8 rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
-          <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="mb-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <h2 className="text-2xl font-bold text-ink">Students Directory</h2>
-            <div className="flex flex-col gap-3 md:flex-row md:items-center">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
               <input
                 type="text"
-                placeholder="Search student by name..."
+                placeholder="Search student..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500 sm:w-64"
               />
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-3">
-                  <label htmlFor="countryFilter" className="text-sm font-bold text-slate-700">Filter by Country:</label>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <div className="flex flex-1 items-center gap-3 sm:flex-initial">
+                  <label htmlFor="countryFilter" className="whitespace-nowrap text-xs font-bold uppercase tracking-wider text-slate-400 sm:text-slate-700">Country:</label>
                   <select 
                     id="countryFilter"
                     value={countryFilter}
@@ -280,7 +281,7 @@ export default function AdminDashboard({ user }) {
                       setCountryFilter(e.target.value);
                       loadStudents(e.target.value, statusFilter);
                     }}
-                    className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500"
+                    className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500 sm:flex-initial"
                   >
                     <option value="All">All</option>
                     {COUNTRIES.map(c => (
@@ -288,8 +289,8 @@ export default function AdminDashboard({ user }) {
                     ))}
                   </select>
                 </div>
-                <div className="flex items-center gap-3">
-                  <label htmlFor="statusFilter" className="text-sm font-bold text-slate-700">Filter by Status:</label>
+                <div className="flex flex-1 items-center gap-3 sm:flex-initial">
+                  <label htmlFor="statusFilter" className="whitespace-nowrap text-xs font-bold uppercase tracking-wider text-slate-400 sm:text-slate-700">Status:</label>
                   <select 
                     id="statusFilter"
                     value={statusFilter}
@@ -297,7 +298,7 @@ export default function AdminDashboard({ user }) {
                       setStatusFilter(e.target.value);
                       loadStudents(countryFilter, e.target.value);
                     }}
-                    className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500"
+                    className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500 sm:flex-initial"
                   >
                     <option value="All">All</option>
                     {STATUSES.map(s => (

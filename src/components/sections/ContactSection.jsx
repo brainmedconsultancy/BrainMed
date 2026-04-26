@@ -126,7 +126,7 @@ export default function ContactSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
-            className="glass-panel rounded-[2rem] p-6 shadow-panel md:p-8"
+            className="glass-panel rounded-[2rem] p-6 shadow-panel md:p-10"
           >
             <div className="grid gap-5 md:grid-cols-2">
               <Field
@@ -239,7 +239,7 @@ function Field({ label, name, type = "text", value, onChange, placeholder, requi
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500"
+        className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500 md:py-4.5"
       />
     </label>
   );

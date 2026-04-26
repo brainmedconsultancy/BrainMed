@@ -80,12 +80,12 @@ export default function CountryDetails() {
                   Home
                 </Link>
                 <ChevronRight size={16} />
-                <button
-                  onClick={() => navigate(-1)}
+                <Link
+                  to="/#countries"
                   className="transition hover:text-white"
                 >
                   Countries
-                </button>
+                </Link>
                 <ChevronRight size={16} />
                 <span className="text-white">{country.name}</span>
               </div>

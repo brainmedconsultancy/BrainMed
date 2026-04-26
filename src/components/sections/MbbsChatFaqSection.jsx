@@ -38,7 +38,7 @@ export default function McaChatFaqSection() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-black p-10 text-white shadow-2xl"
+            className="rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-black p-6 sm:p-10 text-white shadow-2xl"
           >
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400">
               <MessageCircleMore size={28} />
@@ -101,7 +101,7 @@ export default function McaChatFaqSection() {
             </div>
 
             {/* Chat Body */}
-            <div className="h-[600px] overflow-y-auto px-6 py-8 scrollbar-hide bg-[radial-gradient(circle_at_top_right,rgba(6,78,59,0.15),transparent)]">
+            <div className="h-[450px] sm:h-[600px] overflow-y-auto px-6 py-8 scrollbar-hide bg-[radial-gradient(circle_at_top_right,rgba(6,78,59,0.15),transparent)]">
               <div className="space-y-8">
                 {mbbsFaqChats.map((item, index) => (
                   <div key={index} className="space-y-4">

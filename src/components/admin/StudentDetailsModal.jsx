@@ -175,40 +175,48 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
             className="relative w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-[2.5rem] bg-white shadow-2xl ring-1 ring-slate-200 flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-slate-100 px-8 py-6 bg-slate-50/50">
-              <h2 className="text-2xl font-bold text-ink">Student Profile</h2>
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col border-b border-slate-100 bg-slate-50/50 px-6 py-5 md:flex-row md:items-center md:justify-between md:px-8 md:py-6">
+              <div className="mb-4 flex items-center justify-between md:mb-0">
+                <h2 className="text-xl font-bold text-ink md:text-2xl">Student Profile</h2>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="rounded-full p-2 text-slate-400 transition hover:bg-slate-200 hover:text-slate-600 md:hidden"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="flex items-center gap-2">
                 {!isEditingStudent && (
                   <>
                     <button
                       type="button"
                       onClick={() => setIsEditingStudent(true)}
-                      className="inline-flex items-center justify-center rounded-full bg-brand-50 px-5 py-2 text-sm font-bold text-brand-700 transition hover:bg-brand-100"
+                      className="flex-1 items-center justify-center rounded-full bg-brand-50 px-4 py-2.5 text-xs font-bold text-brand-700 transition hover:bg-brand-100 md:px-5 md:py-2 md:text-sm"
                     >
-                      Edit Student
+                      Edit
                     </button>
                     <button
                       type="button"
                       onClick={handleDeleteStudent}
                       disabled={isSubmitting}
-                      className="inline-flex items-center justify-center rounded-full bg-rose-50 px-5 py-2 text-sm font-bold text-rose-600 transition hover:bg-rose-100"
+                      className="flex-1 items-center justify-center rounded-full bg-rose-50 px-4 py-2.5 text-xs font-bold text-rose-600 transition hover:bg-rose-100 md:px-5 md:py-2 md:text-sm"
                     >
-                      {isSubmitting ? "Deleting..." : "Archive"}
+                      {isSubmitting ? "..." : "Archive"}
                     </button>
                   </>
                 )}
                 <button
                   type="button"
                   onClick={onClose}
-                  className="p-2 rounded-full hover:bg-slate-200 transition text-slate-400 hover:text-slate-600"
+                  className="hidden rounded-full p-2 text-slate-400 transition hover:bg-slate-200 hover:text-slate-600 md:block"
                 >
                   <X size={20} />
                 </button>
               </div>
             </div>
 
-            {/* Scrollable Body */}
-            <div className="flex-1 overflow-y-auto px-8 py-6">
+            <div className="flex-1 overflow-y-auto px-6 py-6 md:px-8">
               {isEditingStudent ? (
                 <form onSubmit={handleSaveEdit} className="space-y-8">
                   {editError && (
@@ -270,16 +278,16 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
                   {/* View Mode */}
                   <div>
                     <SectionTitle title="Information Summary" />
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
                       <DataPoint label="Name" value={student.name} />
                       <DataPoint label="Phone" value={student.phone} />
-                      <DataPoint label="Parent Number" value={student.parentPhone} />
-                      <DataPoint label="Email" value={student.email} />
+                      <DataPoint label="Parent" value={student.parentPhone} />
+                      <DataPoint label="Email" value={student.email} className="col-span-2 md:col-span-1" />
                       <DataPoint label="Country" value={student.countryInterested} />
                       <DataPoint 
                         label="Status" 
                         value={
-                          <span className="inline-flex rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-bold uppercase text-brand-700 ring-1 ring-inset ring-brand-600/20">
+                          <span className="inline-flex rounded-full bg-brand-50 px-2.5 py-0.5 text-[10px] font-bold uppercase text-brand-700 ring-1 ring-inset ring-brand-600/20">
                             {student.status || "new"}
                           </span>
                         } 
@@ -317,19 +325,19 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
                   <div className="space-y-6">
                     <SectionTitle title="Updates & Follow-ups" />
                     
-                    <div className="flex gap-3">
+                    <div className="flex flex-col gap-3 sm:flex-row">
                       <input
                         type="text"
                         placeholder="Type a follow-up note..."
                         value={newNoteText}
                         onChange={(e) => setNewNoteText(e.target.value)}
-                        className="flex-1 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10"
+                        className="flex-1 rounded-2xl border border-slate-200 bg-white px-5 py-3.5 text-sm outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10"
                       />
                       <button
                         type="button"
                         onClick={handleAddNote}
                         disabled={isAddingNote || !newNoteText.trim()}
-                        className="rounded-2xl bg-brand-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-700 disabled:opacity-50"
+                        className="rounded-2xl bg-brand-600 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:opacity-50 sm:py-3"
                       >
                         {isAddingNote ? "Adding..." : "Add"}
                       </button>
@@ -391,12 +399,11 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
               )}
             </div>
             
-            {/* Footer */}
-            <div className="border-t border-slate-100 bg-slate-50/50 px-8 py-4 flex justify-end">
+            <div className="border-t border-slate-100 bg-slate-50/50 px-6 py-4 flex justify-end md:px-8">
                <button
                   type="button"
                   onClick={onClose}
-                  className="rounded-full bg-white border border-slate-200 px-8 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-slate-50 shadow-sm"
+                  className="w-full rounded-full bg-white border border-slate-200 px-8 py-3.5 text-sm font-bold text-slate-700 transition hover:bg-slate-50 shadow-sm md:w-auto md:py-2.5"
                 >
                   Close
                 </button>
@@ -413,11 +420,11 @@ function SectionTitle({ title }) {
   return <h3 className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-slate-400">{title}</h3>;
 }
 
-function DataPoint({ label, value }) {
+function DataPoint({ label, value, className = "" }) {
   return (
-    <div>
-      <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-ink">{value || "—"}</p>
+    <div className={className}>
+      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{label}</p>
+      <p className="mt-1 text-sm font-semibold text-ink break-words">{value || "—"}</p>
     </div>
   );
 }
