@@ -1,6 +1,7 @@
 import { format } from "../../utils/formatDate";
 import { LoaderCircle, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { logoutAdmin } from "../../lib/auth";
 import { collection, getDocs, query, orderBy, updateDoc, doc, where } from "firebase/firestore";
 import { db } from "../../lib/firebase";
@@ -77,17 +78,21 @@ export default function AdminDashboard({ user }) {
   }, []);
 
   const handleQuickStatusUpdate = async (studentId, newStatus) => {
+    const loadingToast = toast.loading("Updating status...");
     try {
       await updateDoc(doc(db, "students", studentId), {
         status: newStatus
       });
+      toast.success(`Status updated to ${newStatus}`, { id: loadingToast });
       loadStudents();
     } catch (error) {
       console.error("Error updating status:", error);
+      toast.error("Failed to update status", { id: loadingToast });
     }
   };
 
   const handleExportCSV = async () => {
+    const loadingToast = toast.loading(`Preparing ${exportMonth} export...`);
     try {
       const year = new Date().getFullYear();
       const monthIndex = MONTHS.indexOf(exportMonth);
@@ -104,7 +109,7 @@ export default function AdminDashboard({ user }) {
       const querySnapshot = await getDocs(q);
       
       if (querySnapshot.empty) {
-        alert(`No students found for ${exportMonth} ${year}.`);
+        toast.error(`No students found for ${exportMonth} ${year}.`, { id: loadingToast });
         return;
       }
       
@@ -136,9 +141,11 @@ export default function AdminDashboard({ user }) {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      
+      toast.success("CSV exported successfully", { id: loadingToast });
     } catch (error) {
       console.error("Error exporting CSV:", error);
-      alert("Failed to export students. Please try again.");
+      toast.error("Failed to export students. Please try again.", { id: loadingToast });
     }
   };
 

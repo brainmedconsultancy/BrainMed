@@ -1,26 +1,23 @@
 import { LoaderCircle, LockKeyhole } from "lucide-react";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { loginAdmin } from "../../lib/auth";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [status, setStatus] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
-    setStatus({ type: "", message: "" });
 
     try {
       await loginAdmin(email, password);
-      setStatus({ type: "success", message: "Login successful. Loading dashboard..." });
+      toast.success("Login successful. Loading dashboard...");
     } catch (error) {
-      setStatus({
-        type: "error",
-        message: "Login failed. Please check your admin email and password.",
-      });
+      console.error("Login error:", error);
+      toast.error("Login failed. Please check your credentials.");
     } finally {
       setLoading(false);
     }
@@ -67,23 +64,19 @@ export default function AdminLogin() {
             </label>
           </div>
 
-          {status.message && (
-            <div
-              className={`mt-5 rounded-2xl px-4 py-3 text-sm font-semibold ${
-                status.type === "success" ? "bg-emerald-50 text-emerald-700" : "bg-rose-50 text-rose-700"
-              }`}
-            >
-              {status.message}
-            </div>
-          )}
-
           <button
             type="submit"
             disabled={loading}
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70 shadow-lg shadow-brand-200"
           >
-            {loading ? <LoaderCircle className="animate-spin" size={18} /> : null}
-            Login to Dashboard
+            {loading ? (
+              <>
+                <LoaderCircle className="animate-spin" size={18} />
+                <span>Authenticating...</span>
+              </>
+            ) : (
+              "Login to Dashboard"
+            )}
           </button>
         </form>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, PhoneCall } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { toast } from 'react-hot-toast';
 import { db } from "../../lib/firebase";
 
 const COUNTRIES = ["Russia", "USA", "Georgia", "Kyrgyzstan", "UK", "China", "Singapore", "Malaysia", "Turkey"];
@@ -57,11 +58,14 @@ const CallbackPopup = () => {
     e.preventDefault();
     
     // Validation
-    if (!formData.name.trim()) return;
+    if (!formData.name.trim()) {
+      toast.error("Please enter your name");
+      return;
+    }
     
     const phoneDigits = formData.phone.replace(/\D/g, "");
     if (phoneDigits.length !== 10) {
-      alert("Please enter a valid 10-digit phone number");
+      toast.error("Please enter a valid 10-digit phone number");
       return;
     }
 
@@ -83,6 +87,7 @@ const CallbackPopup = () => {
 
       setIsSubmitted(true);
       localStorage.setItem('callback_submitted', 'true');
+      toast.success("Request submitted successfully!");
       
       // Auto close after 4 seconds
       setTimeout(() => {
@@ -90,7 +95,7 @@ const CallbackPopup = () => {
       }, 4000);
     } catch (error) {
       console.error("Error submitting callback request:", error);
-      alert("Submission failed. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -230,7 +235,7 @@ const CallbackPopup = () => {
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="group relative mt-4 w-full overflow-hidden rounded-2xl bg-brand-600 py-3.5 md:py-4 font-bold text-white shadow-xl transition-all hover:bg-brand-700 hover:shadow-brand-600/25 active:scale-[0.98] disabled:opacity-70"
+                    className="group relative mt-4 w-full overflow-hidden rounded-2xl bg-brand-600 py-3.5 md:py-4 font-bold text-white shadow-xl transition-all hover:bg-brand-700 hover:shadow-brand-600/25 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       {isSubmitting ? "Processing..." : "Request Call Back"}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { toast } from "react-hot-toast";
 import { db } from "../../lib/firebase";
 import { COUNTRIES, validateForm } from "./constants";
 
@@ -14,7 +15,6 @@ export default function CreateStudentModal({ isOpen, onClose, onSuccess }) {
     countryInterested: COUNTRIES[0]
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [createError, setCreateError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +23,13 @@ export default function CreateStudentModal({ isOpen, onClose, onSuccess }) {
 
   const handleCreateStudent = async (e) => {
     e.preventDefault();
-    setCreateError("");
+    
     const errorMsg = validateForm(formData);
     if (errorMsg) {
-      setCreateError(errorMsg);
+      toast.error(errorMsg);
       return;
     }
+
     setIsSubmitting(true);
     try {
       await addDoc(collection(db, "students"), {
@@ -42,12 +43,14 @@ export default function CreateStudentModal({ isOpen, onClose, onSuccess }) {
         createdAt: serverTimestamp(),
         notes: ""
       });
+      
+      toast.success("Student created successfully");
       setFormData({ name: "", phone: "", parentPhone: "", email: "", countryInterested: COUNTRIES[0] });
       onSuccess();
       onClose();
     } catch (error) {
       console.error("Error creating student:", error);
-      setCreateError("Failed to create student.");
+      toast.error("Failed to create student. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -83,12 +86,6 @@ export default function CreateStudentModal({ isOpen, onClose, onSuccess }) {
 
             <div className="flex-1 overflow-y-auto px-6 py-6 md:px-8">
               <form onSubmit={handleCreateStudent} className="space-y-6">
-                {createError && (
-                  <div className="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
-                    {createError}
-                  </div>
-                )}
-
                 <div className="space-y-5">
                   <InputField label="Student Name" name="name" value={formData.name} onChange={handleInputChange} required />
                   <div className="grid gap-5 md:grid-cols-2">
@@ -110,7 +107,7 @@ export default function CreateStudentModal({ isOpen, onClose, onSuccess }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="order-1 rounded-full bg-brand-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-200 transition hover:bg-brand-700 sm:order-2 sm:py-3"
+                    className="order-1 rounded-full bg-brand-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-200 transition hover:bg-brand-700 sm:order-2 sm:py-3 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Creating..." : "Save Student"}
                   </button>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { updateDoc, doc, arrayUnion } from "firebase/firestore";
+import { toast } from "react-hot-toast";
 import { db } from "../../lib/firebase";
 import { format } from "../../utils/formatDate";
 import { COUNTRIES, STATUSES, validateForm } from "./constants";
@@ -10,7 +11,6 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
   const [isEditingStudent, setIsEditingStudent] = useState(false);
   const [editFormData, setEditFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [editError, setEditError] = useState("");
   const [newNoteText, setNewNoteText] = useState("");
   const [isAddingNote, setIsAddingNote] = useState(false);
   const [editingNoteId, setEditingNoteId] = useState(null);
@@ -37,7 +37,6 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
       setNewNoteText("");
       setEditingNoteId(null);
       setEditingNoteText("");
-      setEditError("");
     }
   }, [isOpen, student]);
 
@@ -50,10 +49,9 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
 
   const handleSaveEdit = async (e) => {
     e.preventDefault();
-    setEditError("");
     const errorMsg = validateForm(editFormData);
     if (errorMsg) {
-      setEditError(errorMsg);
+      toast.error(errorMsg);
       return;
     }
     setIsSubmitting(true);
@@ -73,18 +71,19 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
         courseInterested: editFormData.courseInterested,
         intake: editFormData.intake,
       });
+      toast.success("Student updated successfully");
       setIsEditingStudent(false);
       onSuccess(); // reload parent
     } catch (error) {
       console.error("Error updating student:", error);
-      setEditError("Failed to update student.");
+      toast.error("Failed to update student.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleDeleteStudent = async () => {
-    if (!window.confirm("Are you sure you want to delete this student?")) {
+    if (!window.confirm("Are you sure you want to archive this student?")) {
       return;
     }
     setIsSubmitting(true);
@@ -92,10 +91,12 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
       await updateDoc(doc(db, "students", student.id), {
         status: "archived"
       });
+      toast.success("Student archived successfully");
       onSuccess(); // reload parent
       onClose(); // close modal
     } catch (error) {
       console.error("Error deleting student:", error);
+      toast.error("Failed to archive student.");
     } finally {
       setIsSubmitting(false);
     }
@@ -112,10 +113,12 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
       await updateDoc(doc(db, "students", student.id), {
         notesHistory: arrayUnion(newNote)
       });
+      toast.success("Note added successfully");
       setNewNoteText("");
       onSuccess();
     } catch (error) {
       console.error("Error adding note:", error);
+      toast.error("Failed to add note.");
     } finally {
       setIsAddingNote(false);
     }
@@ -128,9 +131,11 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
       await updateDoc(doc(db, "students", student.id), {
         notesHistory: updatedNotes
       });
+      toast.success("Note deleted");
       onSuccess();
     } catch (error) {
       console.error("Error deleting note:", error);
+      toast.error("Failed to delete note.");
     }
   };
 
@@ -146,11 +151,13 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
       await updateDoc(doc(db, "students", student.id), {
         notesHistory: updatedNotes
       });
+      toast.success("Note updated");
       setEditingNoteId(null);
       setEditingNoteText("");
       onSuccess();
     } catch (error) {
       console.error("Error updating note:", error);
+      toast.error("Failed to update note.");
     }
   };
 
@@ -200,9 +207,9 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
                       type="button"
                       onClick={handleDeleteStudent}
                       disabled={isSubmitting}
-                      className="flex-1 items-center justify-center rounded-full bg-rose-50 px-4 py-2.5 text-xs font-bold text-rose-600 transition hover:bg-rose-100 md:px-5 md:py-2 md:text-sm"
+                      className="flex-1 items-center justify-center rounded-full bg-rose-50 px-4 py-2.5 text-xs font-bold text-rose-600 transition hover:bg-rose-100 md:px-5 md:py-2 md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? "..." : "Archive"}
+                      {isSubmitting ? "Wait..." : "Archive"}
                     </button>
                   </>
                 )}
@@ -219,12 +226,6 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
             <div className="flex-1 overflow-y-auto px-6 py-6 md:px-8">
               {isEditingStudent ? (
                 <form onSubmit={handleSaveEdit} className="space-y-8">
-                  {editError && (
-                    <div className="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
-                      {editError}
-                    </div>
-                  )}
-
                   <SectionTitle title="Basic Information" />
                   <div className="grid gap-5 md:grid-cols-2">
                     <InputField label="Full Name" name="name" value={editFormData.name} onChange={handleEditChange} required />
@@ -267,7 +268,7 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="rounded-full bg-brand-600 px-8 py-3 text-sm font-bold text-white transition hover:bg-brand-700 shadow-lg shadow-brand-200"
+                      className="rounded-full bg-brand-600 px-8 py-3 text-sm font-bold text-white transition hover:bg-brand-700 shadow-lg shadow-brand-200 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? "Saving..." : "Save Changes"}
                     </button>
@@ -337,7 +338,7 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
                         type="button"
                         onClick={handleAddNote}
                         disabled={isAddingNote || !newNoteText.trim()}
-                        className="rounded-2xl bg-brand-600 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:opacity-50 sm:py-3"
+                        className="rounded-2xl bg-brand-600 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed sm:py-3"
                       >
                         {isAddingNote ? "Adding..." : "Add"}
                       </button>

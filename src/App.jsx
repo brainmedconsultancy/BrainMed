@@ -1,5 +1,6 @@
 import { Suspense, lazy, } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import FloatingCallButton from "./components/ui/FloatingCallButton";
 
@@ -14,6 +15,7 @@ export default function App() {
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <ScrollToTop />
       {!isAdminPath && <FloatingCallButton />}
       <Suspense

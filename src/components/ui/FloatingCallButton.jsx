@@ -7,7 +7,7 @@ const FloatingCallButton = () => {
   return (
     <a
       href={`tel:${phoneNumber}`}
-      className="fixed bottom-6 right-6 z-[9999] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-emerald-600 text-white shadow-2xl transition-all duration-200 hover:scale-110 hover:bg-emerald-500 hover:shadow-[0_20px_50px_rgba(16,185,129,0.4)] active:scale-95 md:bottom-8 md:right-8"
+      className="fixed bottom-6 right-6 z-[9999] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-emerald-400 text-white shadow-2xl transition-all duration-200 hover:scale-110 hover:bg-emerald-500 hover:shadow-[0_20px_50px_rgba(16,185,129,0.4)] active:scale-95 md:bottom-8 md:right-8"
       aria-label="Call Admin"
     >
       <Phone size={28} fill="currentColor" className="text-white" />

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { toast } from "react-hot-toast";
 import { db } from "../../lib/firebase";
 
 const COUNTRIES = ["Russia", "USA", "Georgia", "Kyrgyzstan", "UK", "China", "Singapore", "Malaysia", "Turkey"];
@@ -15,7 +16,6 @@ const initialForm = {
 
 export default function StudentInquiryForm() {
   const [form, setForm] = useState(initialForm);
-  const [status, setStatus] = useState({ type: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
   function updateField(event) {
@@ -26,7 +26,6 @@ export default function StudentInquiryForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     setSubmitting(true);
-    setStatus({ type: "", message: "" });
 
     try {
       await addDoc(collection(db, "students"), {
@@ -45,15 +44,10 @@ export default function StudentInquiryForm() {
       });
 
       setForm(initialForm);
-      setStatus({
-        type: "success",
-        message: "Your inquiry has been submitted successfully.",
-      });
+      toast.success("Your inquiry has been submitted successfully.");
     } catch (error) {
-      setStatus({
-        type: "error",
-        message: error.message || "Something went wrong while submitting your inquiry.",
-      });
+      console.error("Submission error:", error);
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -95,13 +89,22 @@ export default function StudentInquiryForm() {
         <input type="text" name="marks" value={form.marks} onChange={updateField} placeholder="e.g. 90% in 12th" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc' }} />
       </div>
       
-      {status.message && (
-        <div style={{ padding: '1rem', borderRadius: '4px', background: status.type === 'success' ? '#dcfce7' : '#fee2e2', color: status.type === 'success' ? '#166534' : '#991b1b', fontWeight: 'bold', fontSize: '0.875rem' }}>
-          {status.message}
-        </div>
-      )}
-
-      <button type="submit" disabled={submitting} style={{ marginTop: '0.5rem', padding: '0.75rem', background: '#0056b3', color: 'white', border: 'none', borderRadius: '4px', cursor: submitting ? 'not-allowed' : 'pointer', fontWeight: 'bold', fontSize: '1rem' }}>
+      <button 
+        type="submit" 
+        disabled={submitting} 
+        style={{ 
+          marginTop: '0.5rem', 
+          padding: '0.75rem', 
+          background: submitting ? '#94a3b8' : '#0056b3', 
+          color: 'white', 
+          border: 'none', 
+          borderRadius: '4px', 
+          cursor: submitting ? 'not-allowed' : 'pointer', 
+          fontWeight: 'bold', 
+          fontSize: '1rem',
+          transition: 'all 0.2s ease'
+        }}
+      >
         {submitting ? 'Submitting...' : 'Submit Inquiry'}
       </button>
     </form>
