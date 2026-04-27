@@ -25,7 +25,7 @@ const cards = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="px-4 py-16 md:py-24">
+    <section id="about" className="px-4 py-1 md:py-24">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="About Us"

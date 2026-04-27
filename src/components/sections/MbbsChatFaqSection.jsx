@@ -15,7 +15,7 @@ import SectionHeading from "../layout/SectionHeading";
 
 export default function McaChatFaqSection() {
   return (
-    <section id="mca-faq" className="px-4 py-16 md:py-24 bg-white text-ink">
+    <section id="mbbs-faq" className="px-4 py-16 md:py-24 bg-white text-ink">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         {/* <div className="mb-12 text-center">
@@ -29,7 +29,7 @@ export default function McaChatFaqSection() {
         <SectionHeading
           eyebrow="MBBS Guidance / FAQS"
           title="Student Counseling Chat"
-          // description="Real-time answers for your MBBS journey."
+        // description="Real-time answers for your MBBS journey."
         />
 
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] items-start">

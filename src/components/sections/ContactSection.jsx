@@ -63,7 +63,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="px-4 py-16 md:py-24">
+    <section id="contact" className="px-4 py-12 md:py-24">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Contact"
@@ -77,44 +77,44 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="rounded-[2rem] bg-ink p-8 text-white shadow-panel"
+            className="rounded-[2rem] bg-ink p-6 md:p-10 text-white shadow-panel"
           >
-            <p className="font-display text-sm uppercase tracking-[0.35em] text-emerald-500">
+            <p className="font-display text-[10px] uppercase tracking-[0.35em] text-emerald-500 sm:text-xs">
               Talk to us
             </p>
-            <h3 className="mt-4 text-3xl font-bold">
+            <h3 className="mt-4 text-2xl font-bold md:text-3xl">
               Ready to begin your student journey?
             </h3>
-            <p className="mt-4 text-base leading-7 text-slate-200">
+            <p className="mt-4 text-sm leading-relaxed text-slate-200 md:text-base md:leading-7">
               We provide comprehensive end-to-end guidance for MBBS admissions abroad. From university selection to visa processing and post-arrival support, our experienced team is here for you. Reach out to us for a free counseling session today.
             </p>
 
-            <div className="mt-8 space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10">
+            <div className="mt-8 space-y-4 md:space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 md:h-12 md:w-12 md:rounded-2xl">
                   <Phone size={18} />
                 </div>
                 <div>
-                  <p className="font-semibold">Phone</p>
-                  <p className="text-slate-300">+91 91641 12779</p>
+                  <p className="text-xs font-semibold text-emerald-400 md:text-sm">Phone</p>
+                  <p className="text-sm font-medium text-white md:text-base">+91 91641 12779</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 md:h-12 md:w-12 md:rounded-2xl">
                   <Mail size={18} />
                 </div>
                 <div>
-                  <p className="font-semibold">Email</p>
-                  <p className="text-slate-300">brainmedconsultancy@gmail.com</p>
+                  <p className="text-xs font-semibold text-emerald-400 md:text-sm">Email</p>
+                  <p className="text-sm font-medium text-white md:text-base">brainmedconsultancy@gmail.com</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 md:h-12 md:w-12 md:rounded-2xl">
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <p className="font-semibold">Office</p>
-                  <p className="text-slate-300">Hassan, Karnataka, India</p>
+                  <p className="text-xs font-semibold text-emerald-400 md:text-sm">Office</p>
+                  <p className="text-sm font-medium text-white md:text-base">Hassan, Karnataka, India</p>
                 </div>
               </div>
             </div>
@@ -126,9 +126,9 @@ export default function ContactSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
-            className="glass-panel rounded-[2rem] p-6 shadow-panel md:p-10"
+            className="glass-panel rounded-[2rem] p-5 shadow-panel md:p-10"
           >
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2 md:gap-5">
               <Field
                 label="Full Name"
                 name="fullName"
@@ -160,7 +160,7 @@ export default function ContactSection() {
                 placeholder="you@example.com"
               />
               <label className="md:col-span-2">
-                <span className="mb-2 block text-sm font-bold text-slate-700">
+                <span className="mb-2 block text-[13px] font-bold text-slate-700 md:text-sm">
                   Preferred Country
                 </span>
                 <select
@@ -168,7 +168,7 @@ export default function ContactSection() {
                   value={form.preferredCountry}
                   onChange={updateField}
                   required
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500 md:py-4"
                 >
                   <option value="">Select a country</option>
                   <option value="Russia">Russia</option>
@@ -184,16 +184,16 @@ export default function ContactSection() {
               </label>
 
               <label className="md:col-span-2">
-                <span className="mb-2 block text-sm font-bold text-slate-700">
+                <span className="mb-2 block text-[13px] font-bold text-slate-700 md:text-sm">
                   Message
                 </span>
                 <textarea
                   name="message"
-                  rows="5"
+                  rows="4"
                   value={form.message}
                   onChange={updateField}
                   placeholder="Tell us about your goals, intake, or questions..."
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500 md:py-4"
                 />
               </label>
             </div>
@@ -212,7 +212,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400 px-6 py-4 text-sm font-bold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400 px-6 py-4 text-sm font-bold text-white transition hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {submitting ? (
                 <LoaderCircle className="animate-spin" size={18} />
@@ -229,7 +229,7 @@ export default function ContactSection() {
 function Field({ label, name, type = "text", value, onChange, placeholder, required = true }) {
   return (
     <label>
-      <span className="mb-2 block text-sm font-bold text-slate-700">
+      <span className="mb-2 block text-[13px] font-bold text-slate-700 md:text-sm">
         {label}
       </span>
       <input
@@ -239,7 +239,7 @@ function Field({ label, name, type = "text", value, onChange, placeholder, requi
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500 md:py-4.5"
+        className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm font-medium text-slate-800 outline-none transition focus:border-brand-500 md:py-4.5"
       />
     </label>
   );

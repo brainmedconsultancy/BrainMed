@@ -7,13 +7,13 @@ export default function SectionHeading({ eyebrow, title, description }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6 }}
-      className="mx-auto mb-10 max-w-3xl text-center"
+      className="mx-auto mb-10 max-w-3xl text-center md:mb-16"
     >
-      <p className="mb-3 font-display text-4xl font-extrabold uppercase tracking-[0.35em] text-emerald-500">
+      <p className="mb-3 font-display text-xs font-extrabold uppercase tracking-[0.35em] text-emerald-500 sm:text-sm">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-extrabold text-ink md:text-5xl">{title}</h2>
-      <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">
+      <h2 className="text-3xl font-extrabold leading-tight text-ink sm:text-4xl md:text-5xl">{title}</h2>
+      <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
         {description}
       </p>
     </motion.div>

@@ -1,5 +1,5 @@
 import { format } from "../../utils/formatDate";
-import { LoaderCircle, LogOut } from "lucide-react";
+import { LoaderCircle, LogOut, Users, UserPlus, Star, FileText, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { logoutAdmin } from "../../lib/auth";
@@ -113,7 +113,22 @@ export default function AdminDashboard({ user }) {
         return;
       }
       
-      const headers = ["Name", "Phone", "Parent Phone", "Email", "Country Interested", "Status", "Source", "Created At"];
+      const headers = [
+        "Name", 
+        "Phone", 
+        "Parent Phone", 
+        "Email", 
+        "Country Interested", 
+        "Course",
+        "Intake",
+        "Status", 
+        "Marks (PUC/12th)",
+        "Entrance Rank",
+        "Passing Year",
+        "Source", 
+        "Lead Notes",
+        "Created At"
+      ];
       
       const csvRows = [
         headers.join(","),
@@ -124,10 +139,32 @@ export default function AdminDashboard({ user }) {
           const parentPhone = `"${(s.parentPhone || '').replace(/"/g, '""')}"`;
           const email = `"${(s.email || '').replace(/"/g, '""')}"`;
           const country = `"${(s.countryInterested || '').replace(/"/g, '""')}"`;
+          const course = `"${(s.courseInterested || 'MBBS').replace(/"/g, '""')}"`;
+          const intake = `"${(s.intake || '').replace(/"/g, '""')}"`;
           const status = `"${(s.status || 'new').replace(/"/g, '""')}"`;
+          const marks = `"${(s.pucMarks || '').replace(/"/g, '""')}"`;
+          const rank = `"${(s.entranceExamRank || '').replace(/"/g, '""')}"`;
+          const passingYear = `"${(s.yearOfPassing || '').replace(/"/g, '""')}"`;
           const source = `"${(s.source || 'offline').replace(/"/g, '""')}"`;
+          const notes = `"${(s.notes || '').replace(/"/g, '""').replace(/\n/g, ' ')}"`;
           const createdAt = `"${s.createdAt ? format(s.createdAt) : ''}"`;
-          return [name, phone, parentPhone, email, country, status, source, createdAt].join(",");
+          
+          return [
+            name, 
+            phone, 
+            parentPhone, 
+            email, 
+            country, 
+            course,
+            intake,
+            status, 
+            marks,
+            rank,
+            passingYear,
+            source, 
+            notes,
+            createdAt
+          ].join(",");
         })
       ];
 
@@ -198,27 +235,42 @@ export default function AdminDashboard({ user }) {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-5 md:gap-6">
-          <div className="rounded-[1.5rem] bg-white p-6 shadow-soft text-center">
-            <p className="text-sm font-bold uppercase tracking-wider text-slate-500">Total</p>
-            <p className="mt-2 text-3xl font-bold text-brand-600">{stats.total}</p>
-          </div>
-          <div className="rounded-[1.5rem] bg-white p-6 shadow-soft text-center">
-            <p className="text-sm font-bold uppercase tracking-wider text-slate-500">New</p>
-            <p className="mt-2 text-3xl font-bold text-sky-600">{stats.new}</p>
-          </div>
-          <div className="rounded-[1.5rem] bg-white p-6 shadow-soft text-center">
-            <p className="text-sm font-bold uppercase tracking-wider text-slate-500">Interested</p>
-            <p className="mt-2 text-3xl font-bold text-amber-600">{stats.interested}</p>
-          </div>
-          <div className="rounded-[1.5rem] bg-white p-6 shadow-soft text-center">
-            <p className="text-sm font-bold uppercase tracking-wider text-slate-500">Applied</p>
-            <p className="mt-2 text-3xl font-bold text-purple-600">{stats.applied}</p>
-          </div>
-          <div className="rounded-[1.5rem] bg-white p-6 shadow-soft text-center">
-            <p className="text-sm font-bold uppercase tracking-wider text-slate-500">Enrolled</p>
-            <p className="mt-2 text-3xl font-bold text-emerald-600">{stats.enrolled}</p>
-          </div>
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-5 lg:gap-6">
+          <StatCard 
+            label="Total" 
+            value={stats.total} 
+            icon={<Users className="text-brand-600" size={20} />} 
+            color="bg-brand-50" 
+            textColor="text-brand-600"
+          />
+          <StatCard 
+            label="New" 
+            value={stats.new} 
+            icon={<UserPlus className="text-sky-600" size={20} />} 
+            color="bg-sky-50" 
+            textColor="text-sky-600"
+          />
+          <StatCard 
+            label="Interested" 
+            value={stats.interested} 
+            icon={<Star className="text-amber-600" size={20} />} 
+            color="bg-amber-50" 
+            textColor="text-amber-600"
+          />
+          <StatCard 
+            label="Applied" 
+            value={stats.applied} 
+            icon={<FileText className="text-purple-600" size={20} />} 
+            color="bg-purple-50" 
+            textColor="text-purple-600"
+          />
+          <StatCard 
+            label="Enrolled" 
+            value={stats.enrolled} 
+            icon={<CheckCircle className="text-emerald-600" size={20} />} 
+            color="bg-emerald-50" 
+            textColor="text-emerald-600"
+          />
         </div>
 
         <div className="mt-6 rounded-[2rem] bg-white p-6 shadow-soft md:p-8">
@@ -390,6 +442,28 @@ export default function AdminDashboard({ user }) {
         onClose={() => setSelectedStudent(null)} 
         onSuccess={() => loadStudents()} 
       />
+    </div>
+  );
+}
+
+function StatCard({ label, value, icon, color, textColor }) {
+  return (
+    <div className="relative overflow-hidden rounded-[2rem] bg-white p-5 shadow-soft border border-slate-50 transition hover:shadow-md md:p-6">
+      <div className="flex flex-col items-center gap-3 text-center">
+        <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${color}`}>
+          {icon}
+        </div>
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 md:text-xs">
+            {label}
+          </p>
+          <p className={`mt-1 text-2xl font-bold md:text-3xl ${textColor}`}>
+            {value}
+          </p>
+        </div>
+      </div>
+      {/* Decorative corner accent */}
+      <div className={`absolute -right-2 -top-2 h-12 w-12 rounded-full opacity-10 blur-xl ${color}`} />
     </div>
   );
 }

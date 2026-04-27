@@ -6,7 +6,7 @@ const links = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Countries", href: "#countries" },
-  { label: "MCA FAQ", href: "#mca-faq" },
+  { label: "MBBS FAQ", href: "#mbbs-faq" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Team", href: "#team" },
   { label: "Contact", href: "#contact" },

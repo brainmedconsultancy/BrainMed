@@ -317,7 +317,7 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
 
                   <div>
                     <SectionTitle title="Original Inquiry" />
-                    <div className="rounded-2xl bg-slate-50 p-5 text-sm text-slate-600 italic border border-slate-100">
+                    <div className="rounded-2xl bg-slate-50 p-5 text-sm text-slate-600 italic border border-slate-100 break-words overflow-hidden">
                       {student.notes || "No initial message provided."}
                     </div>
                   </div>
@@ -365,7 +365,7 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
                               </div>
                             ) : (
                               <>
-                                <p className="text-sm leading-relaxed text-slate-700 whitespace-pre-wrap">{note.text}</p>
+                                <p className="text-sm leading-relaxed text-slate-700 whitespace-pre-wrap break-words">{note.text}</p>
                                 <div className="mt-3 flex items-center justify-between border-t border-slate-50 pt-3">
                                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                                     {format(note.createdAt)}
