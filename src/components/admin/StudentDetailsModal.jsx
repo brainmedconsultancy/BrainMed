@@ -184,7 +184,7 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
             {/* Header */}
             <div className="flex flex-col border-b border-slate-100 bg-slate-50/50 px-6 py-5 md:flex-row md:items-center md:justify-between md:px-8 md:py-6">
               <div className="mb-4 flex items-center justify-between md:mb-0">
-                <h2 className="text-xl font-bold text-ink md:text-2xl">Student Profile</h2>
+                <h2 className="text-2xl font-bold text-ink">Student Profile</h2>
                 <button
                   type="button"
                   onClick={onClose}
@@ -268,7 +268,7 @@ export default function StudentDetailsModal({ isOpen, student, onClose, onSucces
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="rounded-full bg-brand-600 px-8 py-3 text-sm font-bold text-white transition hover:bg-brand-700 shadow-lg shadow-brand-200 disabled:opacity-70 disabled:cursor-not-allowed"
+                      className="rounded-full bg-brand-600 px-8 h-12 w-full md:w-auto text-sm font-bold text-white transition hover:bg-brand-700 shadow-lg shadow-brand-200 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? "Saving..." : "Save Changes"}
                     </button>

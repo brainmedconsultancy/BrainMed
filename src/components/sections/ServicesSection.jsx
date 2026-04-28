@@ -5,7 +5,11 @@ import SectionHeading from "../layout/SectionHeading";
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="px-4 py-16 md:py-24">
+    <section id="services" className="relative px-4 py-16 md:py-24 overflow-x-hidden max-w-full">
+      {/* Background Decor */}
+      <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-brand-100/10 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-emerald-100/10 blur-3xl" />
+
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Services"
@@ -26,10 +30,10 @@ export default function ServicesSection() {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
                 <BriefcaseBusiness size={22} />
               </div>
-              <h3 className="mt-5 text-2xl font-bold text-ink">
+              <h3 className="mt-5 text-xl sm:text-2xl font-bold text-ink">
                 {service.title}
               </h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">
+              <p className="mt-3 text-base sm:text-lg leading-7 text-slate-600">
                 {service.description}
               </p>
               <div className="mt-5 h-1 w-16 rounded-full bg-emerald-500 transition-all duration-300 ease-in-out group-hover:w-28" />

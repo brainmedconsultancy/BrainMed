@@ -63,7 +63,11 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="px-4 py-12 md:py-24">
+    <section id="contact" className="relative px-4 py-12 md:py-24 overflow-x-hidden max-w-full">
+      {/* Background Decor */}
+      <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-brand-100/20 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-emerald-100/20 blur-3xl" />
+
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Contact"
@@ -82,10 +86,10 @@ export default function ContactSection() {
             <p className="font-display text-[10px] uppercase tracking-[0.35em] text-emerald-500 sm:text-xs">
               Talk to us
             </p>
-            <h3 className="mt-4 text-2xl font-bold md:text-3xl">
+            <h3 className="mt-4 text-2xl sm:text-3xl md:text-3xl font-bold">
               Ready to begin your student journey?
             </h3>
-            <p className="mt-4 text-sm leading-relaxed text-slate-200 md:text-base md:leading-7">
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-200 md:leading-7">
               We provide comprehensive end-to-end guidance for MBBS admissions abroad. From university selection to visa processing and post-arrival support, our experienced team is here for you. Reach out to us for a free counseling session today.
             </p>
 
@@ -212,7 +216,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400 px-6 py-4 text-sm font-bold text-white transition hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+              className="mt-6 inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400 px-8 h-12 md:h-14 text-sm font-bold text-white transition hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {submitting ? (
                 <LoaderCircle className="animate-spin" size={18} />

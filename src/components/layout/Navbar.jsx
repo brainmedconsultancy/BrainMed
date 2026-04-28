@@ -19,7 +19,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
-      <nav className="glass-panel mx-auto flex max-w-7xl items-center justify-between rounded-full px-5 py-3 shadow-soft">
+      <nav className="glass-panel mx-auto flex max-w-7xl items-center justify-between rounded-full px-5 py-3 shadow-soft overflow-x-hidden">
         <a
           href={resolveHref("#home")}
           className="flex items-center gap-3 sm:gap-4"
@@ -53,7 +53,7 @@ export default function Navbar() {
           ))}
           <a
             href={resolveHref("#contact")}
-            className="rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-gradient-to-b from-emerald-400 to-cyan-400"
+            className="rounded-full bg-ink px-6 h-12 flex items-center justify-center text-sm font-bold text-white transition hover:bg-gradient-to-b from-emerald-400 to-cyan-400"
           >
             Apply Now
           </a>
@@ -85,7 +85,7 @@ export default function Navbar() {
             <div className="mt-2 border-t border-slate-50 pt-2">
               <a
                 href={resolveHref("#contact")}
-                className="flex w-full items-center justify-center rounded-full bg-ink px-5 py-4 text-center text-sm font-bold text-white transition active:scale-[0.98]"
+                className="flex w-full items-center justify-center rounded-full bg-ink px-5 h-12 text-center text-sm font-bold text-white transition active:scale-[0.98]"
                 onClick={() => setOpen(false)}
               >
                 Apply Now

@@ -4,7 +4,11 @@ import SectionHeading from "../layout/SectionHeading";
 
 export default function TeamSection() {
   return (
-    <section id="team" className="overflow-hidden bg-white px-4 py-16 md:py-24">
+    <section id="team" className="relative overflow-hidden px-4 py-16 md:py-24 max-w-full">
+      {/* Background Decor */}
+      <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-brand-100/30 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-emerald-100/30 blur-3xl" />
+
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Team"

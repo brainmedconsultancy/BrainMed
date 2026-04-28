@@ -107,7 +107,11 @@ export default function TestimonialsSection() {
   }));
 
   return (
-    <section id="testimonials" className="px-4 py-16 md:py-24">
+    <section id="testimonials" className="relative px-4 py-12 md:py-24 overflow-hidden max-w-full">
+      {/* Background Decor */}
+      <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-emerald-100/10 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-brand-100/10 blur-3xl" />
+
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Testimonials"
@@ -115,7 +119,7 @@ export default function TestimonialsSection() {
           description="These can stay static for a lightweight setup now and later be connected to a CMS or database if needed."
         />
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 flex gap-4 overflow-x-auto pb-8 snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 items-stretch">
           {testimonialItems.map((item, index) => (
             <motion.div
               key={item.name}
@@ -123,12 +127,12 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.55, delay: index * 0.07 }}
-              className="rounded-[2rem] bg-ink p-6 text-white shadow-panel"
+              className="w-[280px] shrink-0 snap-center rounded-[2rem] bg-ink p-6 text-white shadow-panel flex flex-col sm:w-[320px] lg:w-full"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-accent-300">
                 <Quote size={22} />
               </div>
-              <p className="mt-5 text-base leading-7 text-slate-200">
+              <p className="mt-5 text-base sm:text-lg leading-7 text-slate-200">
                 "{item.review}"
               </p>
               {item.audio ? (
@@ -190,9 +194,9 @@ export default function TestimonialsSection() {
                   </button>
                 </div>
               ) : null}
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <p className="text-lg font-bold">{item.name}</p>
-                <p className="mt-1 text-sm text-brand-200">{item.outcome}</p>
+              <div className="mt-6 border-t border-white/10 pt-5 mt-auto">
+                <p className="text-lg sm:text-xl font-bold">{item.name}</p>
+                <p className="mt-1 text-sm sm:text-base text-brand-200">{item.outcome}</p>
               </div>
             </motion.div>
           ))}

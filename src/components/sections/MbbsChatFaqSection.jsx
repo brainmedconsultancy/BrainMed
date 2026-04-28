@@ -15,7 +15,11 @@ import SectionHeading from "../layout/SectionHeading";
 
 export default function McaChatFaqSection() {
   return (
-    <section id="mbbs-faq" className="px-4 py-16 md:py-24 bg-white text-ink">
+    <section id="mbbs-faq" className="relative px-4 py-16 md:py-24 overflow-hidden max-w-full">
+      {/* Background Decor */}
+      <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-emerald-100/30 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-brand-100/30 blur-3xl" />
+
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         {/* <div className="mb-12 text-center">

@@ -12,8 +12,8 @@ export default function SectionHeading({ eyebrow, title, description }) {
       <p className="mb-3 font-display text-xs font-extrabold uppercase tracking-[0.35em] text-emerald-500 sm:text-sm">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-extrabold leading-tight text-ink sm:text-4xl md:text-5xl">{title}</h2>
-      <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
+      <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold leading-tight text-ink">{title}</h2>
+      <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">
         {description}
       </p>
     </motion.div>

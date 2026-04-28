@@ -29,14 +29,14 @@ export default function CountryCard({ country, index, onClick }) {
           </span>
         </div>
         <div className="absolute inset-x-5 bottom-5">
-          <h3 className="text-2xl font-bold text-white drop-shadow-sm">
+          <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-sm">
             {country.name}
           </h3>
         </div>
       </div>
 
       <div className="p-6">
-        <p className="text-base leading-7 text-slate-600">{country.description}</p>
+        <p className="text-base sm:text-lg leading-7 text-slate-600">{country.description}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {country.services.map((service) => (
             <span

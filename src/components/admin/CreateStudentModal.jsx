@@ -71,10 +71,10 @@ export default function CreateStudentModal({ isOpen, onClose, onSuccess }) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative flex max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-[2rem] bg-white shadow-2xl ring-1 ring-slate-200 md:rounded-[2.5rem]"
+            className="relative flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-[2rem] bg-white shadow-2xl ring-1 ring-slate-200 md:rounded-[2.5rem]"
           >
             <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/50 px-6 py-5 md:px-8 md:py-6">
-              <h2 className="text-xl font-bold text-ink md:text-2xl">New Student</h2>
+              <h2 className="text-2xl font-bold text-ink">New Student</h2>
               <button
                 type="button"
                 onClick={onClose}
@@ -107,7 +107,7 @@ export default function CreateStudentModal({ isOpen, onClose, onSuccess }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="order-1 rounded-full bg-brand-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-200 transition hover:bg-brand-700 sm:order-2 sm:py-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="order-1 rounded-full bg-brand-600 px-8 h-12 w-full md:w-auto text-sm font-bold text-white shadow-lg shadow-brand-200 transition hover:bg-brand-700 sm:order-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Creating..." : "Save Student"}
                   </button>

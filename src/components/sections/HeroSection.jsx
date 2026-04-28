@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full overflow-hidden px-4 pt-6 pb-4 mb-4 md:pt-16 md:pb-4 md:mb-1 "
+      className="relative w-full overflow-hidden px-4 pt-6 pb-4 mb-4 md:pt-16 md:pb-4 md:mb-1 max-w-full"
     >
       <div className="relative mx-auto max-w-7xl">
         <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-10">
@@ -26,7 +26,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.7 }}
-              className="mt-6 max-w-3xl font-display text-3xl font-bold leading-tight text-ink sm:text-4xl md:text-7xl"
+              className="mt-6 max-w-3xl font-display text-2xl sm:text-3xl md:text-7xl font-bold leading-tight text-ink"
             >
               Turn your study abroad plan into a confident next move.
             </motion.h1>
@@ -35,7 +35,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.18, duration: 0.7 }}
-              className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg md:mt-6 md:leading-8"
+              className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-600 md:mt-6 md:leading-8"
             >
               BrainMed helps students choose the right country, shortlist
               colleges, manage applications, and navigate visas with clarity
