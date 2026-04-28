@@ -194,7 +194,7 @@ export default function TestimonialsSection() {
                   </button>
                 </div>
               ) : null}
-              <div className="mt-6 border-t border-white/10 pt-5 mt-auto">
+              <div className="mt-auto border-t border-white/10 pt-5">
                 <p className="text-lg sm:text-xl font-bold">{item.name}</p>
                 <p className="mt-1 text-sm sm:text-base text-brand-200">{item.outcome}</p>
               </div>
