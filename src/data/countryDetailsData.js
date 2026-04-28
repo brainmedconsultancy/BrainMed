@@ -1,382 +1,4 @@
-// export const countryDetails = {
-//   russia: {
-//     overview: {
-//       duration: "6 Years",
-//       medium: "English",
-//       eligibility: "NEET Required",
-//       tuition: "$3,500 - $6,000 per year",
-//       livingCost: "$150 - $300 per month",
-//       climate: "Long cold winters with mild summers",
-//       recognition: "WHO, NMC",
-//     },
-//     universities: [
-//       {
-//         name: "Kazan Federal University",
-//         rank: "Top 10 in Russia",
-//         founded: 1804,
-//         location: "Kazan, Russia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "One of the oldest and most prestigious universities in Russia with strong clinical exposure and modern medical labs.",
-//       },
-//       {
-//         name: "Bashkir State Medical University",
-//         rank: "Top public medical university",
-//         founded: 1932,
-//         location: "Ufa, Russia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Popular among Indian students for its affordable tuition, solid academic support, and established hostel facilities.",
-//       },
-//       {
-//         name: "Crimea Federal University",
-//         rank: "Recognized federal university",
-//         founded: 1918,
-//         location: "Simferopol, Russia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Known for its international medical program, broad patient exposure, and balanced fee structure for MBBS aspirants.",
-//       },
-//     ],
-//   },
-//   georgia: {
-//     overview: {
-//       duration: "6 Years",
-//       medium: "English",
-//       eligibility: "NEET Required",
-//       tuition: "$4,500 - $8,000 per year",
-//       livingCost: "$250 - $450 per month",
-//       climate: "Pleasant summers and cold winters",
-//       recognition: "WHO, NMC",
-//     },
-//     universities: [
-//       {
-//         name: "Tbilisi State Medical University",
-//         rank: "Leading medical university in Georgia",
-//         founded: 1918,
-//         location: "Tbilisi, Georgia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "A long-established university with strong academic reputation, English-medium instruction, and large international student intake.",
-//       },
-//       {
-//         name: "European University",
-//         rank: "Popular private option",
-//         founded: 2012,
-//         location: "Tbilisi, Georgia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Offers a modern campus environment, updated clinical curriculum, and supportive learning pathways for overseas students.",
-//       },
-//       {
-//         name: "Georgian National University SEU",
-//         rank: "Fast-growing private university",
-//         founded: 2001,
-//         location: "Tbilisi, Georgia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Well known for its student support systems, modern teaching spaces, and MBBS-focused international admissions.",
-//       },
-//     ],
-//   },
-//   kyrgyzstan: {
-//     overview: {
-//       duration: "5 to 6 Years",
-//       medium: "English",
-//       eligibility: "NEET Required",
-//       tuition: "$3,000 - $5,500 per year",
-//       livingCost: "$150 - $280 per month",
-//       climate: "Continental climate with cold winters",
-//       recognition: "WHO, NMC",
-//     },
-//     universities: [
-//       {
-//         name: "Kyrgyz State Medical Academy",
-//         rank: "Premier government medical institute",
-//         founded: 1939,
-//         location: "Bishkek, Kyrgyzstan",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "A highly preferred choice for MBBS due to its long academic history, recognized degree, and strong clinical base.",
-//       },
-//       {
-//         name: "International School of Medicine",
-//         rank: "Top choice for international students",
-//         founded: 2003,
-//         location: "Bishkek, Kyrgyzstan",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Designed for global students with English-medium teaching, practical learning, and a transparent admission process.",
-//       },
-//       {
-//         name: "Asian Medical Institute",
-//         rank: "Affordable MBBS destination",
-//         founded: 2004,
-//         location: "Kant, Kyrgyzstan",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Often chosen for budget-friendly MBBS plans, hostel support, and a straightforward curriculum structure.",
-//       },
-//     ],
-//   },
-//   usa: {
-//     overview: {
-//       duration: "Pre-med + 4 Years MD pathway",
-//       medium: "English",
-//       eligibility: "NEET useful for India return path; local entry criteria vary",
-//       tuition: "$25,000 - $60,000+ per year",
-//       livingCost: "$900 - $1,800 per month",
-//       climate: "Varies widely by state",
-//       recognition: "WHO, NMC, ECFMG aligned institutions",
-//     },
-//     universities: [
-//       {
-//         name: "Harvard Medical School",
-//         rank: "Global top tier medical school",
-//         founded: 1782,
-//         location: "Boston, USA",
-//         medium: "English",
-//         recognition: "WHO, NMC referenced recognition pathways",
-//         description:
-//           "Globally respected for academic excellence, research depth, and access to world-class hospital networks.",
-//       },
-//       {
-//         name: "Johns Hopkins University School of Medicine",
-//         rank: "Globally top-ranked",
-//         founded: 1893,
-//         location: "Baltimore, USA",
-//         medium: "English",
-//         recognition: "WHO, NMC referenced recognition pathways",
-//         description:
-//           "A research-driven institution with exceptional clinical training and one of the strongest reputations in medicine.",
-//       },
-//       {
-//         name: "Stanford University School of Medicine",
-//         rank: "Elite innovation-focused medical school",
-//         founded: 1908,
-//         location: "Stanford, USA",
-//         medium: "English",
-//         recognition: "WHO, NMC referenced recognition pathways",
-//         description:
-//           "Known for blending medicine, technology, and research with highly competitive admissions and premium facilities.",
-//       },
-//     ],
-//   },
-//   uk: {
-//     overview: {
-//       duration: "5 to 6 Years",
-//       medium: "English",
-//       eligibility: "NEET Required for Indian return pathway",
-//       tuition: "$30,000 - $50,000 per year",
-//       livingCost: "$900 - $1,600 per month",
-//       climate: "Cool, moderate, and often rainy",
-//       recognition: "WHO, NMC, GMC pathways",
-//     },
-//     universities: [
-//       {
-//         name: "University of Oxford Medical School",
-//         rank: "Global top-ranked",
-//         founded: 1096,
-//         location: "Oxford, UK",
-//         medium: "English",
-//         recognition: "WHO, NMC, GMC",
-//         description:
-//           "A globally prestigious destination offering rigorous academics, research strength, and highly selective medical training.",
-//       },
-//       {
-//         name: "University of Cambridge School of Clinical Medicine",
-//         rank: "Global top-ranked",
-//         founded: 1540,
-//         location: "Cambridge, UK",
-//         medium: "English",
-//         recognition: "WHO, NMC, GMC",
-//         description:
-//           "Known for academic intensity, clinical excellence, and one of the strongest reputations in medical education.",
-//       },
-//       {
-//         name: "King's College London GKT School of Medical Education",
-//         rank: "Top clinical medicine option",
-//         founded: 1829,
-//         location: "London, UK",
-//         medium: "English",
-//         recognition: "WHO, NMC, GMC",
-//         description:
-//           "A major London-based medical school with excellent hospital exposure and strong global recognition.",
-//       },
-//     ],
-//   },
-//   china: {
-//     overview: {
-//       duration: "6 Years",
-//       medium: "English",
-//       eligibility: "NEET Required",
-//       tuition: "$3,500 - $7,000 per year",
-//       livingCost: "$200 - $450 per month",
-//       climate: "Varies by region from temperate to cold",
-//       recognition: "WHO, NMC",
-//     },
-//     universities: [
-//       {
-//         name: "China Medical University",
-//         rank: "Leading MBBS university",
-//         founded: 1931,
-//         location: "Shenyang, China",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Popular for structured MBBS delivery, established international admissions, and a strong emphasis on clinical training.",
-//       },
-//       {
-//         name: "Jilin University",
-//         rank: "Top comprehensive university",
-//         founded: 1946,
-//         location: "Changchun, China",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Offers broad academic infrastructure, recognized MBBS pathways, and competitive affordability for international students.",
-//       },
-//       {
-//         name: "Nanjing Medical University",
-//         rank: "Well-regarded medical university",
-//         founded: 1934,
-//         location: "Nanjing, China",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Known for quality teaching hospitals, balanced tuition costs, and strong interest from students seeking medicine abroad.",
-//       },
-//     ],
-//   },
-//   singapore: {
-//     overview: {
-//       duration: "5 Years",
-//       medium: "English",
-//       eligibility: "Highly competitive; NEET relevant for India return path",
-//       tuition: "$20,000 - $50,000+ per year",
-//       livingCost: "$800 - $1,500 per month",
-//       climate: "Warm and humid year-round",
-//       recognition: "WHO, NMC",
-//     },
-//     universities: [
-//       {
-//         name: "National University of Singapore Yong Loo Lin School of Medicine",
-//         rank: "Top medical school in Asia",
-//         founded: 1905,
-//         location: "Singapore",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "A highly prestigious medical school with strong research culture, advanced hospitals, and excellent career outcomes.",
-//       },
-//       {
-//         name: "Duke-NUS Medical School",
-//         rank: "Graduate-entry premier institution",
-//         founded: 2005,
-//         location: "Singapore",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Built on a Duke-NUS collaboration, it delivers innovation-focused medical education with strong research and clinical links.",
-//       },
-//     ],
-//   },
-//   malaysia: {
-//     overview: {
-//       duration: "5 Years",
-//       medium: "English",
-//       eligibility: "NEET Required for Indian students",
-//       tuition: "$9,000 - $18,000 per year",
-//       livingCost: "$250 - $500 per month",
-//       climate: "Tropical and humid",
-//       recognition: "WHO, NMC",
-//     },
-//     universities: [
-//       {
-//         name: "Universiti Malaya",
-//         rank: "Top public university in Malaysia",
-//         founded: 1905,
-//         location: "Kuala Lumpur, Malaysia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Malaysia's flagship university with strong academic ranking, urban campus access, and respected medical training pathways.",
-//       },
-//       {
-//         name: "International Medical University",
-//         rank: "Leading private medical university",
-//         founded: 1992,
-//         location: "Kuala Lumpur, Malaysia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Known for international collaborations, student-friendly academic systems, and broad healthcare training exposure.",
-//       },
-//       {
-//         name: "MAHSA University",
-//         rank: "Established healthcare-focused institution",
-//         founded: 2005,
-//         location: "Selangor, Malaysia",
-//         medium: "English",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Offers a healthcare-centered environment with accessible admissions and a practical learning focus for medical students.",
-//       },
-//     ],
-//   },
-//   turkey: {
-//     overview: {
-//       duration: "6 Years",
-//       medium: "English and Turkish options",
-//       eligibility: "NEET Required for Indian return pathway",
-//       tuition: "$4,000 - $20,000 per year",
-//       livingCost: "$250 - $500 per month",
-//       climate: "Mixed climate with warm summers and cool winters",
-//       recognition: "WHO, NMC",
-//     },
-//     universities: [
-//       {
-//         name: "Istanbul University-Cerrahpasa",
-//         rank: "Historic top medical option",
-//         founded: 1827,
-//         location: "Istanbul, Turkey",
-//         medium: "English and Turkish",
-//         recognition: "WHO, NMC",
-//         description:
-//           "A heritage medical institution with deep academic roots, respected hospitals, and broad recognition among international students.",
-//       },
-//       {
-//         name: "Hacettepe University",
-//         rank: "Top-tier medical university",
-//         founded: 1967,
-//         location: "Ankara, Turkey",
-//         medium: "English and Turkish",
-//         recognition: "WHO, NMC",
-//         description:
-//           "Widely recognized for clinical strength, research orientation, and strong outcomes in health sciences education.",
-//       },
-//       {
-//         name: "Ankara University Faculty of Medicine",
-//         rank: "Major public university option",
-//         founded: 1945,
-//         location: "Ankara, Turkey",
-//         medium: "English and Turkish",
-//         recognition: "WHO, NMC",
-//         description:
-//           "A public medical school valued for affordability, established hospital ties, and a broad academic ecosystem.",
-//       },
-//     ],
-//   },
-// };
+
 
 export const countryDetails = {
   russia: {
@@ -390,6 +12,49 @@ export const countryDetails = {
       recognition: "WHO, NMC",
     },
     universities: [
+      {
+        name: "Altai State Medical University",
+        rank: "Established regional medical university",
+        founded: 1954,
+        location: "Barnaul, Russia",
+        medium: "English",
+        recognition: "WHO, NMC",
+        description:
+          "Located in Siberia, known for its strong pre-clinical foundations, affordable fee structure, and growing international student community.",
+        mapData: {
+          placeId: "ChIJd8oidEyk3UIRPfoUs5nfWcI",
+          latitude: 53.3426559,
+          longitude: 83.7834162,
+          address:
+            "Prospekt Lenina, 40, Barnaul, Altayskiy kray, Russia, 656038",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJd8oidEyk3UIRPfoUs5nfWcI",
+          photoUrl: `https://upload.wikimedia.org/wikipedia/commons/0/0c/Altai_State_Medical_University_1.jpg`,
+          embedUrl:
+            "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJd8oidEyk3UIRPfoUs5nfWcI",
+        },
+      }, {
+        name: "Omskiy Gosudarstvennyy Meditsinskiy Universitet (Omsk State Medical University)",
+        rank: "One of the oldest and highly ranked medical universities in Siberia",
+        founded: 1920,
+        location: "Omsk, Russia",
+        medium: "English",
+        recognition: "WHO, NMC",
+        description:
+          "A prestigious institution established over a century ago, renowned for its strong clinical practice, experienced faculty, and modern research facilities.",
+        mapData: {
+          placeId: "ChIJb_l9x1kF0UIRvWk_f1f-V0Y", // Placeholder Place ID - update for exact map rendering
+          latitude: 54.985443,
+          longitude: 73.368591,
+          address:
+            "Ulitsa Lenina, 12, Omsk, Omskaya oblast', Russia, 644099",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJb_l9x1kF0UIRvWk_f1f-V0Y",
+          photoUrl: `https://www.eklavyaoverseas.com/assets/images/omsk-state-medical-university.jpg`,
+          embedUrl:
+            "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJb_l9x1kF0UIRvWk_f1f-V0Y",
+        },
+      },
       {
         name: "Kazan Federal University",
         rank: "Top 10 in Russia",
@@ -453,28 +118,7 @@ export const countryDetails = {
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJYws03kPe6kARH77zIQq37lU",
         },
       },
-      {
-        name: "Altai State Medical University",
-        rank: "Established regional medical university",
-        founded: 1954,
-        location: "Barnaul, Russia",
-        medium: "English",
-        recognition: "WHO, NMC",
-        description:
-          "Located in Siberia, known for its strong pre-clinical foundations, affordable fee structure, and growing international student community.",
-        mapData: {
-          placeId: "ChIJd8oidEyk3UIRPfoUs5nfWcI",
-          latitude: 53.3426559,
-          longitude: 83.7834162,
-          address:
-            "Prospekt Lenina, 40, Barnaul, Altayskiy kray, Russia, 656038",
-          mapsUrl:
-            "https://www.google.com/maps/place/?q=place_id:ChIJd8oidEyk3UIRPfoUs5nfWcI",
-          photoUrl: `https://upload.wikimedia.org/wikipedia/commons/0/0c/Altai_State_Medical_University_1.jpg`,
-          embedUrl:
-            "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJd8oidEyk3UIRPfoUs5nfWcI",
-        },
-      },
+
       {
         name: "Mari State Medical University",
         rank: "Popular MBBS destination for Indian students",
