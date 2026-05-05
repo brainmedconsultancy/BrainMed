@@ -637,7 +637,7 @@ export const countryDetails = {
           address: "25 Shattuck St, Boston, MA 02115, USA",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJCyphZol544kR4YZpXdJrwMw",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJCyphZol544kR4YZpXdJrwMw`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJCyphZol544kR4YZpXdJrwMw",
         },
@@ -658,7 +658,7 @@ export const countryDetails = {
           address: "733 N Broadway, Baltimore, MD 21205, USA",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJreW2Bd8EyIkRhCOEnuGNWNE",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJreW2Bd8EyIkRhCOEnuGNWNE`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJreW2Bd8EyIkRhCOEnuGNWNE",
         },
@@ -679,7 +679,7 @@ export const countryDetails = {
           address: "291 Campus Drive, Stanford, CA 94305, USA",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJDQkoCti6j4ARTMlmFrVP3E0",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJDQkoCti6j4ARTMlmFrVP3E0`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJDQkoCti6j4ARTMlmFrVP3E0",
         },
@@ -713,7 +713,7 @@ export const countryDetails = {
           address: "Mansfield Rd, Oxford OX1 3TA, UK",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJHdNV3DHHdkgReQAaoDEjx6s",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJHdNV3DHHdkgReQAaoDEjx6s`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJHdNV3DHHdkgReQAaoDEjx6s",
         },
@@ -734,7 +734,7 @@ export const countryDetails = {
           address: "Addenbrooke's Hospital, Hills Rd, Cambridge CB2 0SP, UK",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJdZOPOqNw2EcRAQ6IEkHAKho",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJdZOPOqNw2EcRAQ6IEkHAKho`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdZOPOqNw2EcRAQ6IEkHAKho",
         },
@@ -755,7 +755,7 @@ export const countryDetails = {
           address: "Strand, London WC2R 2LS, UK",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJ3VW0o7UEdkgRjZLQfvs-ZLA",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJ3VW0o7UEdkgRjZLQfvs-ZLA`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ3VW0o7UEdkgRjZLQfvs-ZLA",
         },
@@ -790,7 +790,7 @@ export const countryDetails = {
             "77 Pu He Lu, Shen Bei Xin Qu, Shenyang, Liaoning, China, 110122",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJrTrboIyHL14RBd_c8KxewLo",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJrTrboIyHL14RBd_c8KxewLo`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJrTrboIyHL14RBd_c8KxewLo",
         },
@@ -812,7 +812,7 @@ export const countryDetails = {
             "2699 Qianjin Dajie, Chaoyang District, Changchun, Jilin, China, 130012",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJ4U-ff5ZdOF4R_PQKKErhTok",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJ4U-ff5ZdOF4R_PQKKErhTok`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ4U-ff5ZdOF4R_PQKKErhTok",
         },
@@ -834,7 +834,7 @@ export const countryDetails = {
             "140 Han Zhong Lu, Gulou District, Nanjing, Jiangsu, China, 210008",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJ8f1s5ISMtTUR_KqffBv8Mzw",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJ8f1s5ISMtTUR_KqffBv8Mzw`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8f1s5ISMtTUR_KqffBv8Mzw",
         },
@@ -1003,7 +1003,7 @@ export const countryDetails = {
             "Cerrahpaşa, Koca Mustafapaşa Cd. No:53, 34098 Fatih/İstanbul, Turkey",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJJ1aOvjK6yhQR60jTfmpm4CU",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJJ1aOvjK6yhQR60jTfmpm4CU`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJJ1aOvjK6yhQR60jTfmpm4CU",
         },
@@ -1025,7 +1025,7 @@ export const countryDetails = {
             "Hacettepe Mah, Tıp Fakültesi, Hacettepe Üniversitesi, 06230 Altındağ/Ankara, Turkey",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJ1fyj5FpO0xQRbF7DuGqmpHM",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJ1fyj5FpO0xQRbF7DuGqmpHM`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ1fyj5FpO0xQRbF7DuGqmpHM",
         },
@@ -1047,7 +1047,7 @@ export const countryDetails = {
             "Hacettepe, A.Adnan Saygun Cd., 06230 Altındağ/Ankara, Turkey",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJwQblGVpO0xQRWLM9c7HMqIM",
-          photoUrl: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&place_id=ChIJwQblGVpO0xQRWLM9c7HMqIM`,
+          photoUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
           embedUrl:
             "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJwQblGVpO0xQRWLM9c7HMqIM",
         },

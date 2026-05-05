@@ -5,7 +5,7 @@ const links = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Countries", href: "#countries" },
-  { label: "FAQ", href: "#mca-faq" },
+  { label: "FAQ", href: "#mbbs-faq" },
   { label: "Contact", href: "#contact" },
 ];
 

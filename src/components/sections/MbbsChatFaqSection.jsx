@@ -13,7 +13,7 @@ import {
 import { mbbsFaqChats } from "../../data/siteData";
 import SectionHeading from "../layout/SectionHeading";
 
-export default function McaChatFaqSection() {
+export default function MbbsChatFaqSection() {
   return (
     <section id="mbbs-faq" className="relative px-4 py-16 md:py-24 overflow-hidden max-w-full">
       {/* Background Decor */}
@@ -180,7 +180,7 @@ export default function McaChatFaqSection() {
             <div className="border-t border-white/5 bg-[#1e293b]/30 p-4">
               <div className="flex items-center gap-3 rounded-full bg-black/40 border border-white/10 px-5 py-3">
                 <div className="flex-1 text-sm text-slate-500">
-                  Ask about Karnataka PGCET or MCA Colleges...
+                  Ask about MBBS Colleges abroad...
                 </div>
                 <div className="flex gap-4 text-slate-400">
                   <Video size={18} />

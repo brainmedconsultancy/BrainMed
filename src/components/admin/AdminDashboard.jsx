@@ -3,14 +3,13 @@ import { LoaderCircle, LogOut, Users, UserPlus, Star, FileText, CheckCircle } fr
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { logoutAdmin } from "../../lib/auth";
-import { collection, getDocs, query, orderBy, updateDoc, doc, where } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, updateDoc, doc, where, limit, startAfter, getCountFromServer } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { COUNTRIES, STATUSES, MONTHS } from "./constants";
 import CreateStudentModal from "./CreateStudentModal";
 import StudentDetailsModal from "./StudentDetailsModal";
 
 export default function AdminDashboard({ user }) {
-  const [allStudents, setAllStudents] = useState([]);
   const [students, setStudents] = useState([]);
   const [studentStatus, setStudentStatus] = useState({ loading: true, error: "" });
   const [selectedStudent, setSelectedStudent] = useState(null);
@@ -18,64 +17,169 @@ export default function AdminDashboard({ user }) {
   const [countryFilter, setCountryFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [exportMonth, setExportMonth] = useState(MONTHS[new Date().getMonth()]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
   const [stats, setStats] = useState({ total: 0, new: 0, interested: 0, applied: 0, enrolled: 0 });
+  const [inquiries, setInquiries] = useState([]);
+  const [allFiltered, setAllFiltered] = useState([]);
   
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
-  async function loadStudents(currentCountry = countryFilter, currentStatus = statusFilter) {
-    setStudentStatus({ loading: true, error: "" });
-    try {
-      const q = query(collection(db, "students"), orderBy("createdAt", "desc"));
-      const querySnapshot = await getDocs(q);
-      
-      let allResults = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      setAllStudents(allResults);
+  const [lastDoc, setLastDoc] = useState(null);
+  const [hasMore, setHasMore] = useState(false);
+  const [fetchingMore, setFetchingMore] = useState(false);
 
+  const loadDashboardData = async () => {
+    try {
+      const coll = collection(db, "students");
+      const [totalSnap, newSnap, interestedSnap, appliedSnap, enrolledSnap, archivedSnap] = await Promise.all([
+          getCountFromServer(coll),
+          getCountFromServer(query(coll, where("status", "==", "new"))),
+          getCountFromServer(query(coll, where("status", "==", "interested"))),
+          getCountFromServer(query(coll, where("status", "==", "applied"))),
+          getCountFromServer(query(coll, where("status", "==", "enrolled"))),
+          getCountFromServer(query(coll, where("status", "==", "archived")))
+      ]);
+      
       setStats({
-        total: allResults.filter(s => s.status !== "archived").length,
-        new: allResults.filter(s => s.status === "new").length,
-        interested: allResults.filter(s => s.status === "interested").length,
-        applied: allResults.filter(s => s.status === "applied").length,
-        enrolled: allResults.filter(s => s.status === "enrolled").length,
+          total: totalSnap.data().count - archivedSnap.data().count,
+          new: newSnap.data().count,
+          interested: interestedSnap.data().count,
+          applied: appliedSnap.data().count,
+          enrolled: enrolledSnap.data().count,
       });
 
-      let results = [...allResults];
+      const inquiriesQuery = query(
+        coll,
+        where("source", "==", "online"),
+        where("status", "==", "new")
+      );
+      const inquiriesSnap = await getDocs(inquiriesQuery);
+      const inquiriesData = inquiriesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      inquiriesData.sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0));
+      setInquiries(inquiriesData);
+    } catch (error) {
+      console.error("Error loading dashboard data:", error);
+    }
+  };
+
+  async function loadStudents(isLoadMore = false, currentCountry = countryFilter, currentStatus = statusFilter, currentSearch = debouncedSearch) {
+    if (isLoadMore) {
+        setFetchingMore(true);
+    } else {
+        setStudentStatus({ loading: true, error: "" });
+    }
+
+    try {
+      const isFiltering = currentStatus !== "All" || currentCountry !== "All" || currentSearch.trim() !== "";
+
+      if (isFiltering && isLoadMore) {
+         const currentLength = students.length;
+         const nextBatch = allFiltered.slice(currentLength, currentLength + 25);
+         setStudents(prev => [...prev, ...nextBatch]);
+         setHasMore(allFiltered.length > currentLength + 25);
+         
+         setStudentStatus({ loading: false, error: "" });
+         setFetchingMore(false);
+         return;
+      }
+
+      let constraints = [];
+
       if (currentStatus !== "All") {
-        results = results.filter(student => student.status === currentStatus);
-      } else {
-        results = results.filter(student => student.status !== "archived");
+        constraints.push(where("status", "==", currentStatus));
       }
-
       if (currentCountry !== "All") {
-        results = results.filter(student => student.countryInterested === currentCountry);
+        constraints.push(where("countryInterested", "==", currentCountry));
+      }
+      
+      let q;
+      if (isFiltering) {
+        q = query(collection(db, "students"), ...constraints);
+      } else {
+        constraints.push(orderBy("createdAt", "desc"));
+        if (isLoadMore && lastDoc) {
+          constraints.push(startAfter(lastDoc));
+        }
+        constraints.push(limit(25));
+        q = query(collection(db, "students"), ...constraints);
       }
 
-      setStudents(results);
-      
-      // If a student is currently selected, update their data in the modal
-      if (selectedStudent) {
-        const updatedStudent = allResults.find(s => s.id === selectedStudent.id);
-        if (updatedStudent) {
-          setSelectedStudent(updatedStudent);
+      const querySnapshot = await getDocs(q);
+      let results = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+      if (currentStatus === "All") {
+        results = results.filter(s => s.status !== "archived");
+      }
+
+      if (currentSearch.trim()) {
+        const searchLower = currentSearch.trim().toLowerCase();
+        results = results.filter(s => 
+          s.name?.toLowerCase().includes(searchLower) || 
+          s.email?.toLowerCase().includes(searchLower) ||
+          s.phone?.includes(searchLower)
+        );
+      }
+
+      if (isFiltering) {
+        results.sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0));
+        setAllFiltered(results);
+        setStudents(results.slice(0, 25));
+        setHasMore(results.length > 25);
+      } else {
+        if (querySnapshot.docs.length > 0) {
+          setLastDoc(querySnapshot.docs[querySnapshot.docs.length - 1]);
+        }
+        setHasMore(querySnapshot.docs.length === 25);
+
+        if (isLoadMore) {
+          setStudents(prev => {
+            const newStudents = [...prev];
+            results.forEach(r => {
+              if (!newStudents.some(s => s.id === r.id)) {
+                newStudents.push(r);
+              }
+            });
+            return newStudents;
+          });
         } else {
-          // If archived/deleted
-          setSelectedStudent(null);
+          setStudents(results);
+          if (selectedStudent) {
+            const updated = results.find(s => s.id === selectedStudent.id);
+            if (updated) setSelectedStudent(updated);
+          }
         }
       }
 
       setStudentStatus({ loading: false, error: "" });
     } catch (error) {
-      setStudentStatus({ loading: false, error: error.message || "Unable to load students." });
+      console.error("Error loading students:", error);
+      if (error.message?.includes("requires an index")) {
+        setStudentStatus({ loading: false, error: "" });
+        setStudents([]);
+        setHasMore(false);
+      } else {
+        setStudentStatus({ loading: false, error: error.message || "Unable to load students." });
+      }
+    } finally {
+      setFetchingMore(false);
     }
   }
 
   useEffect(() => {
-    loadStudents();
+    loadDashboardData();
   }, []);
+
+  useEffect(() => {
+    loadStudents(false, countryFilter, statusFilter, debouncedSearch);
+  }, [debouncedSearch]);
 
   const handleQuickStatusUpdate = async (studentId, newStatus) => {
     const loadingToast = toast.loading("Updating status...");
@@ -84,7 +188,8 @@ export default function AdminDashboard({ user }) {
         status: newStatus
       });
       toast.success(`Status updated to ${newStatus}`, { id: loadingToast });
-      loadStudents();
+      loadDashboardData();
+      loadStudents(false, countryFilter, statusFilter);
     } catch (error) {
       console.error("Error updating status:", error);
       toast.error("Failed to update status", { id: loadingToast });
@@ -185,8 +290,6 @@ export default function AdminDashboard({ user }) {
       toast.error("Failed to export students. Please try again.", { id: loadingToast });
     }
   };
-
-  const inquiries = allStudents.filter(s => s.source === "online" && s.status === "new");
 
   return (
     <div className="min-h-screen px-4 py-8">
@@ -338,7 +441,7 @@ export default function AdminDashboard({ user }) {
                     value={countryFilter}
                     onChange={(e) => {
                       setCountryFilter(e.target.value);
-                      loadStudents(e.target.value, statusFilter);
+                      loadStudents(false, e.target.value, statusFilter);
                     }}
                     className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500 sm:flex-initial"
                   >
@@ -355,7 +458,7 @@ export default function AdminDashboard({ user }) {
                     value={statusFilter}
                     onChange={(e) => {
                       setStatusFilter(e.target.value);
-                      loadStudents(countryFilter, e.target.value);
+                      loadStudents(false, countryFilter, e.target.value);
                     }}
                     className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-500 sm:flex-initial"
                   >
@@ -381,6 +484,7 @@ export default function AdminDashboard({ user }) {
               <table className="w-full text-left text-sm text-slate-600">
                 <thead className="border-b border-slate-200 bg-slate-50 text-xs uppercase text-slate-700">
                   <tr>
+                    <th className="px-4 py-3 w-16">#</th>
                     <th className="px-4 py-3">Name</th>
                     <th className="px-4 py-3">Phone</th>
                     <th className="px-4 py-3">Email</th>
@@ -393,13 +497,19 @@ export default function AdminDashboard({ user }) {
                 </thead>
                 <tbody>
                   {students
-                    .filter((student) => student.name?.toLowerCase().includes(searchQuery.toLowerCase()))
-                    .map((student) => (
+                    .filter((student) => 
+                      !searchQuery.trim() || 
+                      student.name?.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
+                      student.email?.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
+                      student.phone?.includes(searchQuery.trim())
+                    )
+                    .map((student, index) => (
                     <tr 
                       key={student.id} 
                       onClick={() => setSelectedStudent(student)}
                       className="cursor-pointer border-b border-slate-100 transition hover:bg-slate-50/50"
                     >
+                      <td className="whitespace-nowrap px-4 py-4 font-medium text-slate-400">{index + 1}</td>
                       <td className="whitespace-nowrap px-4 py-4 font-semibold text-ink">{student.name}</td>
                       <td className="whitespace-nowrap px-4 py-4">{student.phone}</td>
                       <td className="whitespace-nowrap px-4 py-4">{student.email}</td>
@@ -420,6 +530,19 @@ export default function AdminDashboard({ user }) {
                   ))}
                 </tbody>
               </table>
+              {hasMore && (
+                <div className="mt-6 flex justify-center pb-2">
+                  <button
+                    type="button"
+                    onClick={() => loadStudents(true, countryFilter, statusFilter)}
+                    disabled={fetchingMore}
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-slate-100 px-6 text-sm font-bold text-slate-700 transition hover:bg-slate-200 disabled:opacity-50"
+                  >
+                    {fetchingMore && <LoaderCircle className="animate-spin" size={16} />}
+                    {fetchingMore ? "Loading..." : "Load More"}
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <div className="rounded-[1.75rem] bg-slate-50 p-8 text-center">
@@ -433,14 +556,14 @@ export default function AdminDashboard({ user }) {
       <CreateStudentModal 
         isOpen={isCreateModalOpen} 
         onClose={() => setIsCreateModalOpen(false)} 
-        onSuccess={() => loadStudents()} 
+        onSuccess={() => { loadDashboardData(); loadStudents(false); }} 
       />
 
       <StudentDetailsModal 
         isOpen={!!selectedStudent} 
         student={selectedStudent} 
         onClose={() => setSelectedStudent(null)} 
-        onSuccess={() => loadStudents()} 
+        onSuccess={() => { loadDashboardData(); loadStudents(false); }} 
       />
     </div>
   );
