@@ -269,4 +269,12 @@ export const teamMembers = [
     description:
       "Provides consistent student communication, guidance, and day-to-day support throughout the entire process.",
   },
+  {
+    name: "Preethi",
+    role: "CEO & Founder",
+    company: "Managing Partner",
+    image: "/team/w2.jpeg",
+    description:
+      "Provides consistent student communication, guidance, and day-to-day support throughout the entire process.",
+  },
 ];
