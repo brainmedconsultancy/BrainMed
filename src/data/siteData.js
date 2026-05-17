@@ -262,18 +262,10 @@ export const teamMembers = [
       "Manages documentation, timelines, and internal coordination to keep every application process on track.",
   },
   {
-    name: "Hamsa HY",
-    role: "Managing Partner",
+    name: "Akshata B.M",
+    role: "Co-Founder & Managing Partner",
     company: "Care & Guidance Team",
-    image: "/team/w1.jpeg",
-    description:
-      "Provides consistent student communication, guidance, and day-to-day support throughout the entire process.",
-  },
-  {
-    name: "Preethi",
-    role: "CEO & Founder",
-    company: "Managing Partner",
-    image: "/team/w2.jpeg",
+    image: "/team/w1.png",
     description:
       "Provides consistent student communication, guidance, and day-to-day support throughout the entire process.",
   },

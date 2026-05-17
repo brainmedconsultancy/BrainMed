@@ -19,7 +19,9 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-3 py-1.5 text-[10px] xs:text-xs sm:text-sm font-semibold text-brand-700 shadow-soft sm:px-4 sm:py-2"
             >
               <Sparkles size={16} className="shrink-0" />
-              <span className="truncate">Trusted support for global admissions</span>
+              <span className="truncate">
+                Trusted support for global admissions
+              </span>
             </motion.div>
 
             <motion.h1
@@ -28,7 +30,7 @@ export default function HeroSection() {
               transition={{ delay: 0.1, duration: 0.7 }}
               className="mt-6 max-w-3xl font-display text-2xl sm:text-3xl md:text-7xl font-bold leading-tight text-ink"
             >
-              Turn your study abroad plan into a confident next move.
+              Turn your MBBS study abroad plan into a confident next move.
             </motion.h1>
 
             <motion.p
@@ -99,8 +101,10 @@ export default function HeroSection() {
                 alt="Medical Professionals"
                 className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
                 style={{
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
-                  maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)'
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 90%, transparent 100%)",
+                  maskImage:
+                    "linear-gradient(to bottom, black 90%, transparent 100%)",
                 }}
               />
             </div>
@@ -108,16 +112,29 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Background Watermark - Tighter spacing */}
-      <div className="pointer-events-none relative mt-8 md:mt-16 z-0 flex justify-center overflow-hidden">
-        <motion.p
+      {/* Brand lockup */}
+      <div className="relative z-0 mt-8 flex justify-center overflow-hidden px-2 md:mt-16">
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 1 }}
-          className="font-display select-none whitespace-nowrap text-[10vw] font-black uppercase tracking-[0.14em] text-emerald-400/85 sm:text-[12vw] md:text-[10vw] lg:text-[8.5rem] md:text-emerald-400/85"
+          className="flex w-full flex-col items-center"
         >
-          BrainMed
-        </motion.p>
+          <img
+            src="/vaibhav-medical.png"
+            alt="Vaibhav Medical Education Consultancy"
+            className="h-auto w-full max-w-[240px] object-contain sm:max-w-xs md:max-w-sm"
+          />
+          <p className="mt-2 text-xl font-bold uppercase tracking-[0.28em] text-slate-500 sm:text-2xl md:text-3xl">
+            Powered by
+          </p>
+          <p className="font-display select-none whitespace-nowrap text-[10vw] font-black uppercase tracking-[0.14em] text-emerald-400/85 sm:text-[12vw] md:text-[10vw] lg:text-[8.5rem] md:text-emerald-400/85">
+            BrainMed
+          </p>
+          <p className="-mt-1 text-center text-[11px] font-extrabold uppercase tracking-[0.36em] text-brand-700 sm:text-sm md:-mt-3 md:text-base">
+            Education Consultancy
+          </p>
+        </motion.div>
       </div>
     </section>
   );
