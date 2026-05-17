@@ -165,14 +165,14 @@ export const testimonials = [
       "The team made the process feel calm and organized. My shortlist, SOP, and visa steps were all handled with real clarity.",
   },
   {
-    name: "Priya Sharma",
-    outcome: "Moved to Toronto for Business Analytics",
+    name: "Priya Kumari",
+    outcome: "Moved to Moscow for Kazan Federal University",
     review:
       "I came in confused about country selection. They helped me compare budgets and career outcomes instead of pushing random options.",
   },
   {
     name: "Pramod K",
-    outcome: "Received Australia offer and visa approval",
+    outcome: "Admitted to Altai State Medical University",
     review:
       "Fast responses, clean documentation guidance, and honest feedback. That made a huge difference for my application timeline.",
   },

@@ -30,7 +30,8 @@ export default function HeroSection() {
               transition={{ delay: 0.1, duration: 0.7 }}
               className="mt-6 max-w-3xl font-display text-2xl sm:text-3xl md:text-7xl font-bold leading-tight text-ink"
             >
-              Turn your MBBS study abroad plan into a confident next move.
+              Turn your study <span className="text-[#32D3A5]">MBBS</span>{" "}
+              abroad plan into a confident next move.
             </motion.h1>
 
             <motion.p
@@ -131,7 +132,7 @@ export default function HeroSection() {
           <p className="font-display select-none whitespace-nowrap text-[10vw] font-black uppercase tracking-[0.14em] text-emerald-400/85 sm:text-[12vw] md:text-[10vw] lg:text-[8.5rem] md:text-emerald-400/85">
             BrainMed
           </p>
-          <p className="-mt-1 text-center text-[11px] font-extrabold uppercase tracking-[0.36em] text-brand-700 sm:text-sm md:-mt-3 md:text-base">
+          <p className="-mt-1 text-center text-sm font-extrabold uppercase tracking-[0.36em] text-brand-700 sm:text-base md:-mt-3 md:text-lg">
             Education Consultancy
           </p>
         </motion.div>
